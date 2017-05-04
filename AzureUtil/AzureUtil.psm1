@@ -85,6 +85,9 @@ function Get-NonAttachedManagedDisk
         [string[]] $ExcludeResourceGroup
     )
 
+    # Login check.
+    try { [void](Get-AzureRMContext -ErrorAction Stop) } catch { throw }
+
     # List non-attached managed disks.
     (Get-AzureRmDisk).ToArray() |
         Where-Object -FilterScript {
