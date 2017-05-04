@@ -30,6 +30,9 @@ function Get-EmptyResourceGroup
     [CmdletBinding()]
     param ()
 
+    # Login check.
+    try { [void](Get-AzureRMContext -ErrorAction Stop) } catch { throw }
+
     # Create a array that contains non empty resource group names.
     $nonEmptyResourceGroupNmaes = @()
     Get-AzureRmResource |
