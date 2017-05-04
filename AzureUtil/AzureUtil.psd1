@@ -54,6 +54,7 @@ CLRVersion = '4.0.30319.42000'
 RequiredModules = @(
     'Microsoft.PowerShell.Utility',
     'AzureRM.Resources',
+    'AzureRM.Profile',
     'AzureRM.Compute',
     'AzureRM.Storage',
     'Azure.Storage'
@@ -126,6 +127,7 @@ PrivateData = @{
         ExternalModuleDependencies = @(
             'Microsoft.PowerShell.Utility',
             'AzureRM.Resources',
+            'AzureRM.Profile',
             'AzureRM.Compute',
             'AzureRM.Storage',
             'Azure.Storage'
