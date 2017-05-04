@@ -111,16 +111,16 @@ PrivateData = @{
         Tags = @('Azure', 'ARM', 'ResourceGroup', 'Management', 'VM', 'VirtualMachne', 'Disk', 'VHD', 'Blob', 'ManagedDisks')
 
         # A URL to the license for this module.
-        LicenseUri = 'https://github.com/tksh164/azure-util-powershell-module/blob/master/LICENSE'
+        LicenseUri = 'https://github.com/tksh164/AzureUtil-PowerShellModule/blob/master/LICENSE'
 
         # A URL to the main website for this project.
-        ProjectUri = 'https://github.com/tksh164/azure-util-powershell-module'
+        ProjectUri = 'https://github.com/tksh164/AzureUtil-PowerShellModule'
 
         # A URL to an icon representing this module.
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'https://github.com/tksh164/azure-util-powershell-module'
+        ReleaseNotes = 'https://github.com/tksh164/AzureUtil-PowerShellModule#release-notes'
 
         # External dependent modules of this module.
         ExternalModuleDependencies = @(
@@ -136,7 +136,7 @@ PrivateData = @{
 } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
-HelpInfoURI = 'https://github.com/tksh164/azure-util-powershell-module'
+HelpInfoURI = 'https://github.com/tksh164/AzureUtil-PowerShellModule'
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
 #DefaultCommandPrefix = ''
