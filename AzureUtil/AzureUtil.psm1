@@ -22,7 +22,7 @@ This example is get the all empty resource groups.
 PowerShell Gallery: https://www.powershellgallery.com/packages/AzureUtil/
 
 .LINK
-GitHub: https://github.com/tksh164/azure-util-powershell-module
+GitHub: https://github.com/tksh164/AzureUtil-PowerShellModule
 #>
 function Get-EmptyResourceGroup
 {
@@ -71,7 +71,7 @@ This example is remove the all non-attached managed disk resources in the curren
 PowerShell Gallery: https://www.powershellgallery.com/packages/AzureUtil/
 
 .LINK
-GitHub: https://github.com/tksh164/azure-util-powershell-module
+GitHub: https://github.com/tksh164/AzureUtil-PowerShellModule
 #>
 function Get-NonAttachedManagedDisk
 {
@@ -119,7 +119,7 @@ This example is remove the all non-attached non-managed disks (blobs) in the cur
 PowerShell Gallery: https://www.powershellgallery.com/packages/AzureUtil/
 
 .LINK
-GitHub: https://github.com/tksh164/azure-util-powershell-module
+GitHub: https://github.com/tksh164/AzureUtil-PowerShellModule
 #>
 function Get-NonAttachedNonManagedDisk
 {
