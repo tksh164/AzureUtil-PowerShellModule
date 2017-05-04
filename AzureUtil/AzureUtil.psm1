@@ -24,7 +24,7 @@ PowerShell Gallery: https://www.powershellgallery.com/packages/AzureUtil/
 .LINK
 GitHub: https://github.com/tksh164/AzureUtil-PowerShellModule
 #>
-function Get-EmptyResourceGroup
+function Get-AzureUtilEmptyResourceGroup
 {
     [OutputType([Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup])]
     [CmdletBinding()]
@@ -76,7 +76,7 @@ PowerShell Gallery: https://www.powershellgallery.com/packages/AzureUtil/
 .LINK
 GitHub: https://github.com/tksh164/AzureUtil-PowerShellModule
 #>
-function Get-NonAttachedManagedDisk
+function Get-AzureUtilNonAttachedManagedDisk
 {
     [OutputType([Microsoft.Azure.Commands.Compute.Automation.Models.PSDiskList])]
     [CmdletBinding()]
@@ -127,7 +127,7 @@ PowerShell Gallery: https://www.powershellgallery.com/packages/AzureUtil/
 .LINK
 GitHub: https://github.com/tksh164/AzureUtil-PowerShellModule
 #>
-function Get-NonAttachedNonManagedDisk
+function Get-AzureUtilNonAttachedNonManagedDisk
 {
     [OutputType([Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob])]
     [CmdletBinding()]
