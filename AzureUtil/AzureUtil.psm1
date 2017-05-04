@@ -19,10 +19,10 @@ Get the resource groups that not contains any resources.
 This example is get the all empty resource groups.
 
 .LINK
-PowerShell Gallery page - https://www.powershellgallery.com/packages/AzureUtil/
+PowerShell Gallery: https://www.powershellgallery.com/packages/AzureUtil/
 
 .LINK
-GitHub repository - https://github.com/tksh164/azure-util-powershell-module
+GitHub: https://github.com/tksh164/azure-util-powershell-module
 #>
 function Get-EmptyResourceGroup
 {
@@ -68,10 +68,10 @@ This example is get the all non-attached managed disk resources in the current s
 This example is remove the all non-attached managed disk resources in the current subscription.
 
 .LINK
-PowerShell Gallery page - https://www.powershellgallery.com/packages/AzureUtil/
+PowerShell Gallery: https://www.powershellgallery.com/packages/AzureUtil/
 
 .LINK
-GitHub repository - https://github.com/tksh164/azure-util-powershell-module
+GitHub: https://github.com/tksh164/azure-util-powershell-module
 #>
 function Get-NonAttachedManagedDisk
 {
@@ -116,10 +116,10 @@ This example is get the all non-attached non-managed disks (blobs) in the curren
 This example is remove the all non-attached non-managed disks (blobs) in the current subscription except the storage accounts in the "securitydata" resource group.
 
 .LINK
-PowerShell Gallery page - https://www.powershellgallery.com/packages/AzureUtil/
+PowerShell Gallery: https://www.powershellgallery.com/packages/AzureUtil/
 
 .LINK
-GitHub repository - https://github.com/tksh164/azure-util-powershell-module
+GitHub: https://github.com/tksh164/azure-util-powershell-module
 #>
 function Get-NonAttachedNonManagedDisk
 {
