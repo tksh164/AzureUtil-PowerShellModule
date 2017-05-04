@@ -29,7 +29,7 @@ PowerShell Gallery: https://www.powershellgallery.com/packages/AzureUtil/
 .LINK
 GitHub: https://github.com/tksh164/AzureUtil-PowerShellModule
 #>
-function Get-AzureUtilNonAttachedNonManagedDisk
+function Get-AzureUtilNonAttachedUnmanagedDisk
 {
     [OutputType([Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob])]
     [CmdletBinding()]
