@@ -1,27 +1,27 @@
 <#
 .SYNOPSIS
-Get non-attached non-managed disks (Blob).
+Get non-attached unmanaged disks (Blob).
 
 .DESCRIPTION
-Get non-attached non-managed disks (Blob).
+Get non-attached unmanaged disks (Blob).
 
 .PARAMETER ExcludeResourceGroup
 This cmdlet is ignore this resource groups. It is not included in the processing target.
  
 .EXAMPLE
-    Get-AzureUtilNonAttachedNonManagedDisk -Verbose
+    Get-AzureUtilNonAttachedUnmanagedDisk -Verbose
 
-This example is get the all non-attached non-managed disks (blobs) in the current subscription.
-
-.EXAMPLE
-    Get-AzureUtilNonAttachedNonManagedDisk -ExcludeResourceGroup 'securitydata' -Verbose
-
-This example is get the all non-attached non-managed disks (blobs) in the current subscription except the storage accounts in the "securitydata" resource group.
+This example is get the all non-attached unmanaged disks (blobs) in the current subscription.
 
 .EXAMPLE
-    Get-AzureUtilNonAttachedNonManagedDisk -ExcludeResourceGroup 'securitydata' -Verbose | Remove-AzureStorageBlob -Verbose
+    Get-AzureUtilNonAttachedUnmanagedDisk -ExcludeResourceGroup 'securitydata' -Verbose
 
-This example is remove the all non-attached non-managed disks (blobs) in the current subscription except the storage accounts in the "securitydata" resource group.
+This example is get the all non-attached unmanaged disks (blobs) in the current subscription except the storage accounts in the "securitydata" resource group.
+
+.EXAMPLE
+    Get-AzureUtilNonAttachedUnmanagedDisk -ExcludeResourceGroup 'securitydata' -Verbose | Remove-AzureStorageBlob -Verbose
+
+This example is remove the all non-attached unmanaged disks (blobs) in the current subscription except the storage accounts in the "securitydata" resource group.
 
 .LINK
 PowerShell Gallery: https://www.powershellgallery.com/packages/AzureUtil/
@@ -29,7 +29,7 @@ PowerShell Gallery: https://www.powershellgallery.com/packages/AzureUtil/
 .LINK
 GitHub: https://github.com/tksh164/AzureUtil-PowerShellModule
 #>
-function Get-AzureUtilNonAttachedNonManagedDisk
+function Get-AzureUtilNonAttachedUnmanagedDisk
 {
     [OutputType([Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob])]
     [CmdletBinding()]
