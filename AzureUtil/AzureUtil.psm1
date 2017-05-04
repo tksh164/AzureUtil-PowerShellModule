@@ -30,6 +30,9 @@ function Get-EmptyResourceGroup
     [CmdletBinding()]
     param ()
 
+    # Login check.
+    try { [void](Get-AzureRMContext -ErrorAction Stop) } catch { throw }
+
     # Create a array that contains non empty resource group names.
     $nonEmptyResourceGroupNmaes = @()
     Get-AzureRmResource |
@@ -82,6 +85,9 @@ function Get-NonAttachedManagedDisk
         [string[]] $ExcludeResourceGroup
     )
 
+    # Login check.
+    try { [void](Get-AzureRMContext -ErrorAction Stop) } catch { throw }
+
     # List non-attached managed disks.
     (Get-AzureRmDisk).ToArray() |
         Where-Object -FilterScript {
@@ -129,6 +135,9 @@ function Get-NonAttachedNonManagedDisk
         [Parameter(Mandatory = $false)]
         [string[]] $ExcludeResourceGroup
     )
+
+    # Login check.
+    try { [void](Get-AzureRMContext -ErrorAction Stop) } catch { throw }
 
     # 
     # Get the all attached VHD URIs from the VM configurations.
