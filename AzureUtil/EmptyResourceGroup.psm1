@@ -1,3 +1,8 @@
+#requires -Version 5
+#requires -Modules @{ ModuleName='Microsoft.PowerShell.Utility'; ModuleVersion='3.1.0.0' }
+#requires -Modules @{ ModuleName='AzureRM.Profile'; ModuleVersion='2.6.0' }
+#requires -Modules @{ ModuleName='AzureRM.Resources'; ModuleVersion='3.6.0' }
+
 <#
 .SYNOPSIS
 Get the resource groups that not contains any resources.
