@@ -43,7 +43,7 @@ function Get-AzureUtilNonAttachedManagedDisk
     )
 
     # Login check.
-    try { [void](Get-AzureRMContext -ErrorAction Stop) } catch { throw }
+    try { [void] (Get-AzureRMContext -ErrorAction Stop) } catch { throw }
 
     # List non-attached managed disks.
     (Get-AzureRmDisk).ToArray() |

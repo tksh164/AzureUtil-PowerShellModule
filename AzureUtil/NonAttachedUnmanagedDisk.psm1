@@ -46,7 +46,7 @@ function Get-AzureUtilNonAttachedUnmanagedDisk
     )
 
     # Login check.
-    try { [void](Get-AzureRMContext -ErrorAction Stop) } catch { throw }
+    try { [void] (Get-AzureRMContext -ErrorAction Stop) } catch { throw }
 
     # 
     # Get the all attached VHD URIs from the VM configurations.
