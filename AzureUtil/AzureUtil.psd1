@@ -57,7 +57,8 @@ RequiredModules = @(
     'AzureRM.Resources',
     'AzureRM.Compute',
     'Azure.Storage',
-    'AzureRM.Storage'
+    'AzureRM.Storage',
+    'AzureRM.Network'
 )
 
 # Assemblies that must be loaded prior to importing this module
@@ -79,7 +80,8 @@ RequiredModules = @(
 FunctionsToExport = @(
     'Get-AzureUtilEmptyResourceGroup',
     'Get-AzureUtilNonAttachedManagedDisk',
-    'Get-AzureUtilNonAttachedUnmanagedDisk'
+    'Get-AzureUtilNonAttachedUnmanagedDisk',
+    'Out-AzureUtilRdcManRdgFile'
 )
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
@@ -130,11 +132,12 @@ PrivateData = @{
         # External dependent modules of this module.
         ExternalModuleDependencies = @(
             'Microsoft.PowerShell.Utility',
-            'AzureRM.Resources',
             'AzureRM.Profile',
+            'AzureRM.Resources',
             'AzureRM.Compute',
+            'Azure.Storage',
             'AzureRM.Storage',
-            'Azure.Storage'
+            'AzureRM.Network'
         )
 
     } # End of PSData hashtable
