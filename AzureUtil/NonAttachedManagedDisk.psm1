@@ -31,8 +31,8 @@ GitHub: https://github.com/tksh164/AzureUtil-PowerShellModule
 #>
 function Get-AzureUtilNonAttachedManagedDisk
 {
-    [OutputType([Microsoft.Azure.Commands.Compute.Automation.Models.PSDiskList])]
     [CmdletBinding()]
+    [OutputType([Microsoft.Azure.Commands.Compute.Automation.Models.PSDiskList])]
     param (
         [Parameter(Mandatory = $false)]
         [string[]] $ExcludeResourceGroup
