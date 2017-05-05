@@ -5,6 +5,41 @@
 #requires -Modules @{ ModuleName='AzureRM.Compute'; ModuleVersion='2.7.0' }
 #requires -Modules @{ ModuleName='AzureRM.Network'; ModuleVersion='3.5.0' }
 
+<#
+.SYNOPSIS
+Create a .rdg file for Azure Windows virtual machine connection.
+
+.DESCRIPTION
+Create a .rdg file for Azure Windows virtual machine connection. The .rdg file is can open by Remote Desktop Connection Manager.
+
+.PARAMETER ResourceGroupName
+This cmdlet creates connection entries to the virtual machines contained in the resource groups specified by this parameter.
+
+.PARAMETER FilePath
+File path of the .rdg file to save. This parameter is optional. The default file path is 'AzureVMConnection.rdg' under the current folder.
+
+.PARAMETER RootGroupName
+Display name for the root node of the .rdg file. This parameter is optional. The default display name is 'AzureVMConnections'.
+
+.EXAMPLE
+    Out-AzureUtilRdcManRdgFile -ResourceGroupName 'Prod-RG','Dev-RG'
+
+This example is creates .rdg file in current folder. The .rdg file contains connections for Azure Windows virtual machine in resource group Prod-RG and Dev-RG.
+
+.EXAMPLE
+    Out-AzureUtilRdcManRdgFile -ResourceGroupName 'Prod-RG','Dev-RG' -FilePath 'C:\NewProject.rdg' -RootGroupName 'NewProjectVMs'
+
+This example is creates .rdg file as 'C:\NewProject.rdg'. The .rdg file contains connections for Azure Windows virtual machine in resource group Prod-RG and Dev-RG. The root node name of connections is 'NewProjectVMs'.
+
+.LINK
+PowerShell Gallery: https://www.powershellgallery.com/packages/AzureUtil/
+
+.LINK
+GitHub: https://github.com/tksh164/AzureUtil-PowerShellModule
+
+.LINK
+Remote Desktop Connection Manager: https://www.microsoft.com/en-us/download/details.aspx?id=44989
+#>
 function Out-AzureUtilRdcManRdgFile
 {
     [CmdletBinding()]
