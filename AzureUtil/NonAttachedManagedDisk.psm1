@@ -1,3 +1,7 @@
+#requires -Version 5
+#requires -Modules @{ ModuleName='AzureRM.Profile'; ModuleVersion='2.6.0' }
+#requires -Modules @{ ModuleName='AzureRM.Compute'; ModuleVersion='2.7.0' }
+
 <#
 .SYNOPSIS
 Get non-attached managed disks.
