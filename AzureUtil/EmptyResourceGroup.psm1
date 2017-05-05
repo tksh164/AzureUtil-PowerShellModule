@@ -13,15 +13,28 @@ Get the resource groups that not contains any resources from the entire subscrip
 .PARAMETER ExcludeResourceGroup
 This cmdlet is ignore the resource groups that provided by this parameter. This parameter is optional.
 
+.PARAMETER ExcludeLocation
+This cmdlet is ignore the resource groups that has location provided by this parameter. This parameter is optional.
+
 .EXAMPLE
     Get-AzureUtilEmptyResourceGroup
 
 This example is get the all empty resource groups in current subscription.
 
 .EXAMPLE
+    Get-AzureUtilEmptyResourceGroup -ExcludeLocation 'japaneast','Japan West'
+
+In this example, it is to get the all empty resource groups in the current subscription except the resource group's location is 'japaneast' or 'Japan West'.
+
+.EXAMPLE
     Get-AzureUtilEmptyResourceGroup -ExcludeResourceGroup 'ProjectA-RG','ProjectB-RG' | Remove-AzureRmResourceGroup -Force
 
 In this example, it is to remove the all empty resource groups in the current subscription except the 'ProjectA-RG' and 'ProjectB-RG' resource groups. Those resource groups are not included to remove even if those were empty.
+
+.EXAMPLE
+    Get-AzureUtilEmptyResourceGroup -ExcludeResourceGroup 'Prod-RG' -ExcludeLocation 'Japan West'
+
+In this example, it is to get the all empty resource groups in the current subscription except the resource group that is name is 'Prod-RG' or location is 'Japan West'.
 
 .LINK
 PowerShell Gallery: https://www.powershellgallery.com/packages/AzureUtil/
