@@ -53,8 +53,8 @@ CLRVersion = '4.0.30319.42000'
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(
     'Microsoft.PowerShell.Utility',
-    'AzureRM.Resources',
     'AzureRM.Profile',
+    'AzureRM.Resources',
     'AzureRM.Compute',
     'AzureRM.Storage',
     'Azure.Storage'
