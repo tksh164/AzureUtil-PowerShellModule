@@ -83,9 +83,6 @@ function GetNormalizedLocationName
     # Get the Azure locations.
     $azureLocations = Get-AzureRmLocation
 
-    # Initialize normalized exclude locations.
-    $normalizedExcludeLocations = @()
-
     # Normalize the exclude locations.
     $ExcludeLocation |
         ForEach-Object -Process {
@@ -102,13 +99,11 @@ function GetNormalizedLocationName
 
             if ($location -ne $null)
             {
-                $normalizedExcludeLocations += $location.Location
+                $location.Location
             }
             else
             {
                 throw ('The Azure location "{0}" is not recognized.' -f $unnormalizedLocation)
             }
         }
-
-    $normalizedExcludeLocations
 }
