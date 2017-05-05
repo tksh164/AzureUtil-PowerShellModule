@@ -13,7 +13,7 @@ Get the unmanaged disks (VHDs/Blobs) that non-attached to any virtual machines f
 Get the unmanaged disks (VHDs/Blobs) that non-attached to any virtual machines from the entire subscription.
 
 .PARAMETER ExcludeResourceGroup
-This cmdlet is ignore the resource groups that provided by this parameter.
+This cmdlet is ignore the resource groups that provided by this parameter. This parameter is optional.
 
 .EXAMPLE
     Get-AzureUtilNonAttachedUnmanagedDisk -Verbose
