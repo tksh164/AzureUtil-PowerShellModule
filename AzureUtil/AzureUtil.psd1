@@ -103,7 +103,8 @@ FileList = @(
     'AzureUtil.psm1',
     'EmptyResourceGroup.psm1',
     'NonAttachedManagedDisk.psm1',
-    'NonAttachedUnmanagedDisk.psm1'
+    'NonAttachedUnmanagedDisk.psm1',
+    'RdcManRdgFile.psm1'
 )
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
