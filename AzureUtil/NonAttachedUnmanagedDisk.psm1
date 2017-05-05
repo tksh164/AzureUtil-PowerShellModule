@@ -31,8 +31,8 @@ GitHub: https://github.com/tksh164/AzureUtil-PowerShellModule
 #>
 function Get-AzureUtilNonAttachedUnmanagedDisk
 {
-    [OutputType([Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob])]
     [CmdletBinding()]
+    [OutputType([Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob])]
     param (
         [Parameter(Mandatory = $false)]
         [string[]] $ExcludeResourceGroup
