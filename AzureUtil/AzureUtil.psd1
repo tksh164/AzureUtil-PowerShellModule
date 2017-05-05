@@ -56,8 +56,8 @@ RequiredModules = @(
     'AzureRM.Profile',
     'AzureRM.Resources',
     'AzureRM.Compute',
-    'AzureRM.Storage',
-    'Azure.Storage'
+    'Azure.Storage',
+    'AzureRM.Storage'
 )
 
 # Assemblies that must be loaded prior to importing this module
