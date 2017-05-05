@@ -22,6 +22,18 @@ This cmdlet is ignore the resource groups that has location provided by this par
 This example is get the all empty resource groups in current subscription.
 
 .EXAMPLE
+    Get-AzureUtilEmptyResourceGroup | Format-Table -Property 'ResourceGroupName','Location'
+
+    ResourceGroupName Location 
+    ----------------- -------- 
+    ProjectA-RG       westus
+    ProjectB-RG       eastus
+    Prod-RG           japaneast
+    Test-RG           japanwest
+
+This example is get the all empty resource groups in current subscription.
+
+.EXAMPLE
     Get-AzureUtilEmptyResourceGroup -ExcludeLocation 'japaneast','Japan West'
 
 In this example, it is to get the all empty resource groups in the current subscription except the resource group's location is 'japaneast' or 'Japan West'.
