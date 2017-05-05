@@ -5,21 +5,27 @@
 
 <#
 .SYNOPSIS
-Get the resource groups that not contains any resources.
+Get the resource groups that not contains any resources from the entire subscription.
 
 .DESCRIPTION
-Get the resource groups that not contains any resources.
+Get the resource groups that not contains any resources from the entire subscription.
 
 .EXAMPLE
     Get-AzureUtilEmptyResourceGroup
 
-This example is get the all empty resource groups.
+This example is get the all empty resource groups in current subscription.
 
 .LINK
 PowerShell Gallery: https://www.powershellgallery.com/packages/AzureUtil/
 
 .LINK
 GitHub: https://github.com/tksh164/AzureUtil-PowerShellModule
+
+.LINK
+Get-AzureUtilNonAttachedManagedDisk
+
+.LINK
+Get-AzureUtilNonAttachedUnmanagedDisk
 #>
 function Get-AzureUtilEmptyResourceGroup
 {
