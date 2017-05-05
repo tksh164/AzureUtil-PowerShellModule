@@ -23,7 +23,7 @@ In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) 
 .EXAMPLE
     Get-AzureUtilNonAttachedUnmanagedDisk -ExcludeResourceGroup 'TemplateStore-RG','securitydata' -Verbose
 
-In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription except the storage accounts in 'TemplateStore-RG' and 'securitydata' resource groups.
+In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription except the storage accounts in the 'TemplateStore-RG' and 'securitydata' resource groups.
 
 .EXAMPLE
     Get-AzureUtilNonAttachedUnmanagedDisk -ExcludeResourceGroup 'securitydata' -Verbose | Remove-AzureStorageBlob -Verbose
