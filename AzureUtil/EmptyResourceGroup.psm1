@@ -41,11 +41,20 @@ function Get-AzureUtilEmptyResourceGroup
     [OutputType([Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup])]
     param (
         [Parameter(Mandatory = $false)]
-        [string[]] $ExcludeResourceGroup
+        [string[]] $ExcludeResourceGroup,
+
+        [Parameter(Mandatory = $false)]
+        [string[]] $ExcludeLocation
     )
 
     # Login check.
     try { [void] (Get-AzureRMContext -ErrorAction Stop) } catch { throw }
+
+    # Normalize the exclude locations.
+    if ($PSBoundParameters.ContainsKey('ExcludeLocation'))
+    {
+        $ExcludeLocation = GetNormalizedLocationName -ExcludeLocation $ExcludeLocation
+    }
 
     # Create a array that contains non empty resource group names.
     $nonEmptyResourceGroupNmaes = @()
@@ -57,6 +66,49 @@ function Get-AzureUtilEmptyResourceGroup
     Get-AzureRmResourceGroup |
         Where-Object -FilterScript {
             ($nonEmptyResourceGroupNmaes -notcontains $_.ResourceGroupName) -and
-            ($ExcludeResourceGroup -notcontains $_.ResourceGroupName)
+            ($ExcludeResourceGroup -notcontains $_.ResourceGroupName) -and
+            ($ExcludeLocation -notcontains $_.Location)
         }
+}
+
+function GetNormalizedLocationName
+{
+    [CmdletBinding()]
+    [OutputType([string])]
+    param (
+        [Parameter(Mandatory = $false)]
+        [string[]] $ExcludeLocation
+    )
+
+    # Get the Azure locations.
+    $azureLocations = Get-AzureRmLocation
+
+    # Initialize normalized exclude locations.
+    $normalizedExcludeLocations = @()
+
+    # Normalize the exclude locations.
+    $ExcludeLocation |
+        ForEach-Object -Process {
+
+            $unnormalizedLocation = $_
+
+            # Get the Azure location by Location or DisplayName.
+            $location = $azureLocations |
+                Where-Object -FilterScript {
+                    ($_.Location -eq $unnormalizedLocation) -or
+                    ($_.DisplayName -eq $unnormalizedLocation)
+                } |
+                Select-Object -First 1
+
+            if ($location -ne $null)
+            {
+                $normalizedExcludeLocations += $location.Location
+            }
+            else
+            {
+                throw ('The Azure location "{0}" is not recognized.' -f $unnormalizedLocation)
+            }
+        }
+
+    $normalizedExcludeLocations
 }
