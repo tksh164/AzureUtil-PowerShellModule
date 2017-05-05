@@ -18,8 +18,8 @@ GitHub: https://github.com/tksh164/AzureUtil-PowerShellModule
 #>
 function Get-AzureUtilEmptyResourceGroup
 {
-    [OutputType([Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup])]
     [CmdletBinding()]
+    [OutputType([Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup])]
     param ()
 
     # Login check.
