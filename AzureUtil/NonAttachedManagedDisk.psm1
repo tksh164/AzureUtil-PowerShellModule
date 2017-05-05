@@ -4,34 +4,40 @@
 
 <#
 .SYNOPSIS
-Get non-attached managed disks.
+Get the managed disks that non-attached to any virtual machines from the entire subscription.
 
 .DESCRIPTION
-Get non-attached managed disks.
+Get the managed disks that non-attached to any virtual machines from the entire subscription.
 
 .PARAMETER ExcludeResourceGroup
-This cmdlet is ignore this resource groups. It is not included in the processing target.
+This cmdlet is ignore the resource groups that provided by this parameter. This parameter is optional.
 
 .EXAMPLE
     Get-AzureUtilNonAttachedManagedDisk
 
-This example is get the all non-attached managed disk resources in the current subscription.
+In this example, it is to get the all non-attached managed disk resources in the current subscription.
 
 .EXAMPLE
     Get-AzureUtilNonAttachedManagedDisk -ExcludeResourceGroup 'Prod-RG','Test-RG'
 
-This example is get the all non-attached managed disk resources in the current subscription except the disk resources in the "Prod-RG" and "Test-RG" resource groups.
+In this example, it is to get the all non-attached managed disk resources in the current subscription except the disk resources in the 'Prod-RG' and 'Test-RG' resource groups.
 
 .EXAMPLE
     Get-AzureUtilNonAttachedManagedDisk | Remove-AzureRmDisk -Verbose
 
-This example is remove the all non-attached managed disk resources in the current subscription.
+In this example, it is to remove the all non-attached managed disk resources in the current subscription.
 
 .LINK
 PowerShell Gallery: https://www.powershellgallery.com/packages/AzureUtil/
 
 .LINK
 GitHub: https://github.com/tksh164/AzureUtil-PowerShellModule
+
+.LINK
+Get-AzureUtilNonAttachedUnmanagedDisk
+
+.LINK
+Get-AzureUtilEmptyResourceGroup
 #>
 function Get-AzureUtilNonAttachedManagedDisk
 {
