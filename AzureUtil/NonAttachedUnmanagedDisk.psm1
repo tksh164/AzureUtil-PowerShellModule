@@ -7,34 +7,40 @@
 
 <#
 .SYNOPSIS
-Get non-attached unmanaged disks (Blob).
+Get the unmanaged disks (VHDs/Blobs) that non-attached to any virtual machines from the entire subscription.
 
 .DESCRIPTION
-Get non-attached unmanaged disks (Blob).
+Get the unmanaged disks (VHDs/Blobs) that non-attached to any virtual machines from the entire subscription.
 
 .PARAMETER ExcludeResourceGroup
-This cmdlet is ignore this resource groups. It is not included in the processing target.
- 
+This cmdlet is ignore the resource groups that provided by this parameter.
+
 .EXAMPLE
     Get-AzureUtilNonAttachedUnmanagedDisk -Verbose
 
-This example is get the all non-attached unmanaged disks (blobs) in the current subscription.
+In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription.
 
 .EXAMPLE
-    Get-AzureUtilNonAttachedUnmanagedDisk -ExcludeResourceGroup 'securitydata' -Verbose
+    Get-AzureUtilNonAttachedUnmanagedDisk -ExcludeResourceGroup 'TemplateStore-RG','securitydata' -Verbose
 
-This example is get the all non-attached unmanaged disks (blobs) in the current subscription except the storage accounts in the "securitydata" resource group.
+In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription except the storage accounts in 'TemplateStore-RG' and 'securitydata' resource groups.
 
 .EXAMPLE
     Get-AzureUtilNonAttachedUnmanagedDisk -ExcludeResourceGroup 'securitydata' -Verbose | Remove-AzureStorageBlob -Verbose
 
-This example is remove the all non-attached unmanaged disks (blobs) in the current subscription except the storage accounts in the "securitydata" resource group.
+In this example, it is to remove the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription except the storage accounts in the 'securitydata' resource group.
 
 .LINK
 PowerShell Gallery: https://www.powershellgallery.com/packages/AzureUtil/
 
 .LINK
 GitHub: https://github.com/tksh164/AzureUtil-PowerShellModule
+
+.LINK
+Get-AzureUtilNonAttachedManagedDisk
+
+.LINK
+Get-AzureUtilEmptyResourceGroup
 #>
 function Get-AzureUtilNonAttachedUnmanagedDisk
 {
