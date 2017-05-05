@@ -31,7 +31,10 @@ function Get-AzureUtilEmptyResourceGroup
 {
     [CmdletBinding()]
     [OutputType([Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup])]
-    param ()
+    param (
+        [Parameter(Mandatory = $false)]
+        [string[]] $ExcludeResourceGroup
+    )
 
     # Login check.
     try { [void] (Get-AzureRMContext -ErrorAction Stop) } catch { throw }
@@ -44,5 +47,8 @@ function Get-AzureUtilEmptyResourceGroup
 
     # Lookup the empty resource group name from all resource group name using non-empty resource group name array.
     Get-AzureRmResourceGroup |
-        Where-Object -FilterScript { $nonEmptyResourceGroupNmaes -notcontains $_.ResourceGroupName }
+        Where-Object -FilterScript {
+            ($nonEmptyResourceGroupNmaes -notcontains $_.ResourceGroupName) -and
+            ($ExcludeResourceGroup -notcontains $_.ResourceGroupName)
+        }
 }
