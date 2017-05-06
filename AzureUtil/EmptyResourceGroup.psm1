@@ -65,10 +65,10 @@ function Get-AzureUtilEmptyResourceGroup
     [CmdletBinding()]
     [OutputType([Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup])]
     param (
-        [Parameter(Mandatory = $false)]
+        [Parameter(Mandatory = $false)][ValidateNotNullOrEmpty()]
         [string[]] $ExcludeResourceGroup,
 
-        [Parameter(Mandatory = $false)]
+        [Parameter(Mandatory = $false)][ValidateNotNullOrEmpty()]
         [string[]] $ExcludeLocation
     )
 
@@ -101,7 +101,7 @@ function GetNormalizedLocationName
     [CmdletBinding()]
     [OutputType([string])]
     param (
-        [Parameter(Mandatory = $false)]
+        [Parameter(Mandatory = $true)][ValidateNotNullOrEmpty()]
         [string[]] $ExcludeLocation
     )
 
