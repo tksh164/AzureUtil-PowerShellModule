@@ -20,7 +20,7 @@ In this example, it is to get the all non-attached managed disk resources in the
 .EXAMPLE
     Get-AzureUtilNonAttachedManagedDisk -ExcludeResourceGroup 'Prod-RG','Test-RG'
 
-In this example, it is to get the all non-attached managed disk resources in the current subscription except the disk resources in the 'Prod-RG' and 'Test-RG' resource groups.
+In this example, it is to get the all non-attached managed disk resources in the current subscription except the disk resources in the "Prod-RG" and "Test-RG" resource groups.
 
 .EXAMPLE
     Get-AzureUtilNonAttachedManagedDisk | Remove-AzureRmDisk -Verbose
