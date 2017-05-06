@@ -45,7 +45,7 @@ Get-AzureUtilEmptyResourceGroup
 function Get-AzureUtilNonAttachedUnmanagedDisk
 {
     [CmdletBinding()]
-    [OutputType([Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob])]
+    [OutputType([PSCustomObject])]
     param (
         [Parameter(Mandatory = $false)][ValidateNotNullOrEmpty()]
         [string[]] $ExcludeResourceGroup
@@ -71,8 +71,9 @@ function Get-AzureUtilNonAttachedUnmanagedDisk
             # Exclude the non target resource groups.
             if ($ExcludeResourceGroup -notcontains $_.ResourceGroupName)
             {
-                $resourceGroupName = $_.ResourceGroupName
-                $storageAccountName = $_.StorageAccountName
+                $storageAccount = $_
+                $resourceGroupName = $storageAccount.ResourceGroupName
+                $storageAccountName = $storageAccount.StorageAccountName
                 Write-Verbose -Message ('Scanning SA:{0} in RG:{1}' -f $storageAccountName,$resourceGroupName)
 
                 $storageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName).Value | Select-Object -First 1
@@ -94,7 +95,24 @@ function Get-AzureUtilNonAttachedUnmanagedDisk
                                 # Verify that it is a non-attached VHD.
                                 if ($blobUri.EndsWith('.vhd') -and ($attachedVhdUris -notcontains $blobUri))
                                 {
-                                    $_
+                                    [PSCustomObject] @{
+                                        ResourceGroupName  = $resourceGroupName
+                                        StorageAccountName = $storageAccountName
+                                        Location           = $storageAccount.Location
+                                        Sku                = $storageAccount.Sku
+                                        ContainerName      = $containerName
+                                        Name               = $_.Name
+                                        ICloudBlob         = $_.ICloudBlob
+                                        BlobType           = $_.BlobType
+                                        Length             = $_.Length
+                                        ContentType        = $_.ContentType
+                                        LastModified       = $_.LastModified
+                                        SnapshotTime       = $_.SnapshotTime
+                                        ContinuationToken  = $_.ContinuationToken
+                                        Context            = $_.Context
+                                        StorageAccount     = $storageAccount
+                                    }
+
                                     $nonAttachedVhdCount++
                                 }
                             }
