@@ -44,7 +44,7 @@ function Get-AzureUtilNonAttachedManagedDisk
     [CmdletBinding()]
     [OutputType([Microsoft.Azure.Commands.Compute.Automation.Models.PSDiskList])]
     param (
-        [Parameter(Mandatory = $false)]
+        [Parameter(Mandatory = $false)][ValidateNotNullOrEmpty()]
         [string[]] $ExcludeResourceGroup
     )
 
