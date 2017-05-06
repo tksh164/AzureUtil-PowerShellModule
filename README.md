@@ -47,21 +47,21 @@ Test-RG           japanwest
 ```
 
 #### Example 3
-In this example, it is to get the all empty resource groups in the current subscription except the resource group's location is 'japaneast' or 'Japan West'.
+In this example, it is to get the all empty resource groups in the current subscription except the resource group's location is "japaneast" or "Japan West".
 
 ```PowerShell
 PS > Get-AzureUtilEmptyResourceGroup -ExcludeLocation 'japaneast','Japan West'
 ```
 
 #### Example 4
-In this example, it is to remove the all empty resource groups in the current subscription except the 'ProjectA-RG' and 'ProjectB-RG' resource groups. Those resource groups are not included to remove even if those were empty.
+In this example, it is to remove the all empty resource groups in the current subscription except the "ProjectA-RG" and "ProjectB-RG" resource groups. Those resource groups are not included to remove even if those were empty.
 
 ```PowerShell
 PS > Get-AzureUtilEmptyResourceGroup -ExcludeResourceGroup 'ProjectA-RG','ProjectB-RG' | Remove-AzureRmResourceGroup -Force
 ```
 
 #### Example 5
-In this example, it is to get the all empty resource groups in the current subscription except the resource group that is name is 'Prod-RG' or location is 'Japan West'.
+In this example, it is to get the all empty resource groups in the current subscription except the resource group that is name is "Prod-RG" or location is "Japan West".
 
 ```PowerShell
 PS > Get-AzureUtilEmptyResourceGroup -ExcludeResourceGroup 'Prod-RG' -ExcludeLocation 'Japan West'
@@ -86,7 +86,7 @@ PS > Get-AzureUtilNonAttachedManagedDisk
 ```
 
 #### Example 2
-In this example, it is to get the all non-attached managed disk resources in the current subscription except the disk resources in the 'Prod-RG' and 'Test-RG' resource groups.
+In this example, it is to get the all non-attached managed disk resources in the current subscription except the disk resources in the "Prod-RG" and "Test-RG" resource groups.
 
 ```PowerShell
 PS > Get-AzureUtilNonAttachedManagedDisk -ExcludeResourceGroup 'Prod-RG','Test-RG'
@@ -118,14 +118,14 @@ PS > Get-AzureUtilNonAttachedUnmanagedDisk -Verbose
 ```
 
 #### Example 2
-In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription except the storage accounts in the 'TemplateStore-RG' and 'securitydata' resource groups.
+In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription except the storage accounts in the "TemplateStore-RG" and "securitydata" resource groups.
 
 ```PowerShell
 PS > Get-AzureUtilNonAttachedUnmanagedDisk -ExcludeResourceGroup 'TemplateStore-RG','securitydata' -Verbose
 ```
 
 #### Example 3
-In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription except the storage accounts in the 'securitydata' resource groups. The results is formatted as table style in this example.
+In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription except the storage accounts in the "securitydata" resource group. The results is formatted as table style in this example.
 
 ```PowerShell
 PS > $disks = Get-AzureUtilNonAttachedUnmanagedDisk -ExcludeResourceGroup 'securitydata'
@@ -146,34 +146,34 @@ Test-RG        premsa          japaneast PremiumLRS  vhd       osdisk.vhd       
 ```
 
 #### Example 4
-In this example, it is to remove the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription except the storage accounts in the 'securitydata' resource group.
+In this example, it is to remove the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription except the storage accounts in the "securitydata" resource group.
 
 ```PowerShell
 PS > Get-AzureUtilNonAttachedUnmanagedDisk -ExcludeResourceGroup 'securitydata' -Verbose | Remove-AzureStorageBlob -Verbose
 ```
 
 ## Out-AzureUtilRdcManRdgFile cmdlet
-Create a .rdg file for Azure Windows virtual machine connection. The .rdg file is can open by [Remote Desktop Connection Manager](https://www.microsoft.com/en-us/download/details.aspx?id=44989).
+Create a ".rdg" file for Azure Windows virtual machine connection. The ".rdg" file is can open by [Remote Desktop Connection Manager](https://www.microsoft.com/en-us/download/details.aspx?id=44989).
 
 ### Parameters
 
 Parameter Name    | Description
 ------------------|-------------------
 ResourceGroupName | This cmdlet creates connection entries to the virtual machines contained in the resource groups specified by this parameter.
-FilePath          | File path of the .rdg file to save. This parameter is optional. The default file path is 'AzureVMConnection.rdg' under the current folder.
-RootGroupName     | Display name for the root node of the .rdg file. This parameter is optional. The default display name is 'AzureVMConnections'.
+FilePath          | File path of the ".rdg" file to save. This parameter is optional. The default file path is "AzureVMConnection.rdg" under the current folder.
+RootGroupName     | Display name for the root node of the ".rdg" file. This parameter is optional. The default display name is "AzureVMConnections".
 
 ### Examples
 
 #### Example 1
-This example is creates .rdg file in current folder. The .rdg file contains connections for Azure Windows virtual machine in resource group Prod-RG and Dev-RG.
+This example is creates ".rdg" file in current folder. The ".rdg" file contains connections for Azure Windows virtual machine in resource group "Prod-RG" and "Dev-RG".
 
 ```PowerShell
 PS > Out-AzureUtilRdcManRdgFile -ResourceGroupName 'Prod-RG','Dev-RG'
 ```
 
 #### Example 2
-This example is creates .rdg file as 'C:\NewProject.rdg'. The .rdg file contains connections for Azure Windows virtual machine in resource group Prod-RG and Dev-RG. The root node name of connections is 'NewProjectVMs'.
+This example is creates ".rdg" file as "C:\NewProject.rdg". The .rdg file contains connections for Azure Windows virtual machine in resource group "Prod-RG" and "Dev-RG". The root node name of connections is "NewProjectVMs".
 
 ```PowerShell
 PS > Out-AzureUtilRdcManRdgFile -ResourceGroupName 'Prod-RG','Dev-RG' -FilePath 'C:\NewProject.rdg' -RootGroupName 'NewProjectVMs'
