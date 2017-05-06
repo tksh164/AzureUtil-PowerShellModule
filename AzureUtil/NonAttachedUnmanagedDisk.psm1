@@ -54,24 +54,9 @@ function Get-AzureUtilNonAttachedUnmanagedDisk
     # Login check.
     try { [void] (Get-AzureRMContext -ErrorAction Stop) } catch { throw }
 
-    # 
     # Get the all attached VHD URIs from the VM configurations.
-    #
-
     Write-Verbose -Message ('Get all attached VHD URI...')
-
-    $attachedVhdUris = Get-AzureRmVM |
-        ForEach-Object -Process {
-
-            # Exclude the non target resource groups.
-            if ($ExcludeResourceGroup -notcontains $_.ResourceGroupName)
-            {
-                $storageProfile = $_.StorageProfile
-                if ($storageProfile.OsDisk.Vhd -ne $null) { $storageProfile.OsDisk.Vhd.Uri }
-                if ($storageProfile.DataDisks.Vhd -ne $null) { $storageProfile.DataDisks.Vhd.Uri }
-            }
-        }
-
+    $attachedVhdUris = GetAttachedVhdUri -ExcludeResourceGroup $ExcludeResourceGroup
     Write-Verbose -Message ('Found the {0} attached VHD in the current subscription.' -f $attachedVhdUris.Count)
 
     #
@@ -116,6 +101,32 @@ function Get-AzureUtilNonAttachedUnmanagedDisk
                     }
 
                 Write-Verbose -Message ('Found {0} the non-attached VHD in SA:{1} in RG:{2}' -f $nonAttachedVhdCount,$storageAccountName,$resourceGroupName)
+            }
+        }
+}
+
+function GetAttachedVhdUri
+{
+    [CmdletBinding()]
+    [OutputType([string])]
+    param (
+        [Parameter(Mandatory = $false)]
+        [string[]] $ExcludeResourceGroup
+    )
+
+    Get-AzureRmVM |
+        ForEach-Object -Process {
+
+            # Exclude the non target resource groups.
+            if ($ExcludeResourceGroup -notcontains $_.ResourceGroupName)
+            {
+                $storageProfile = $_.StorageProfile
+
+                # Attached VHD URI as OS disk.
+                if ($storageProfile.OsDisk.Vhd -ne $null) { $storageProfile.OsDisk.Vhd.Uri }
+
+                # All attached VHD URIs as data disks.
+                if ($storageProfile.DataDisks.Vhd -ne $null) { $storageProfile.DataDisks.Vhd.Uri }
             }
         }
 }
