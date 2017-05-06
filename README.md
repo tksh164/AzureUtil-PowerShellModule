@@ -181,5 +181,8 @@ PS > Out-AzureUtilRdcManRdgFile -ResourceGroupName 'Prod-RG','Dev-RG' -FilePath 
 
 ## Release Notes
 
+### [1.0.3](https://github.com/tksh164/AzureUtil-PowerShellModule/releases/tag/1.0.3)
+- Some fixes.
+
 ### [1.0.2](https://github.com/tksh164/AzureUtil-PowerShellModule/releases/tag/1.0.2)
 - Initial release.
