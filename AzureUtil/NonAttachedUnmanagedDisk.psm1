@@ -47,7 +47,7 @@ function Get-AzureUtilNonAttachedUnmanagedDisk
     [CmdletBinding()]
     [OutputType([Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob])]
     param (
-        [Parameter(Mandatory = $false)]
+        [Parameter(Mandatory = $false)][ValidateNotNullOrEmpty()]
         [string[]] $ExcludeResourceGroup
     )
 
