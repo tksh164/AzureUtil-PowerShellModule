@@ -42,7 +42,7 @@ In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) 
     ProjectB-RG    vm2sa1310       japaneast StandardLRS vhd       osdisk.vhd          127 5/5/2017 2:22:10 PM +00:00
     Test-RG        premsa          japaneast PremiumLRS  vhd       osdisk.vhd          127 5/5/2017 3:52:45 PM +00:00
 
-In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription except the storage accounts in the 'securitydata' resource groups. The results is formatted as table style in this example.
+In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription except the storage accounts in the 'securitydata' resource group. The results is formatted as table style in this example.
 
 .EXAMPLE
     Get-AzureUtilNonAttachedUnmanagedDisk -ExcludeResourceGroup 'securitydata' -Verbose | Remove-AzureStorageBlob -Verbose
