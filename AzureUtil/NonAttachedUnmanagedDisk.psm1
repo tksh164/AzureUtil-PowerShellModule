@@ -26,6 +26,25 @@ In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) 
 In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription except the storage accounts in the 'TemplateStore-RG' and 'securitydata' resource groups.
 
 .EXAMPLE
+    PS C:\>$disks = Get-AzureUtilNonAttachedUnmanagedDisk -ExcludeResourceGroup 'securitydata'
+    PS C:\>$disks | Format-Table -Property @{ Label = 'Resource Group'; Expression = { $_.ResourceGroupName } },
+                                           @{ Label = 'Storage Account'; Expression = { $_.StorageAccountName } },
+                                           @{ Label = 'Location'; Expression = { $_.Location } },
+                                           @{ Label = 'SKU'; Alignment = 'Left'; Expression = { $_.Sku.Name } },
+                                           @{ Label = 'Container'; Expression = { $_.ContainerName } },
+                                           @{ Label = 'VHD/Blob'; Expression = { $_.Name } },
+                                           @{ Label = 'Size (GB)'; Expression = { [int] ($_.Length / 1GB) } },
+                                           'LastModified'
+
+    Resource Group Storage Account Location  SKU         Container VHD/Blob      Size (GB) LastModified
+    -------------- --------------- --------  ---         --------- --------      --------- ------------
+    ProjectA-RG    vm1sa1055       japaneast StandardLRS vhd       datadisk1.vhd       127 5/6/2017 11:05:14 AM +00:00
+    ProjectB-RG    vm2sa1310       japaneast StandardLRS vhd       osdisk.vhd          127 5/5/2017 2:22:10 PM +00:00
+    Test-RG        premsa          japaneast PremiumLRS  vhd       osdisk.vhd          127 5/5/2017 3:52:45 PM +00:00
+
+In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription except the storage accounts in the 'securitydata' resource groups. The results is formatted as table style in this example.
+
+.EXAMPLE
     Get-AzureUtilNonAttachedUnmanagedDisk -ExcludeResourceGroup 'securitydata' -Verbose | Remove-AzureStorageBlob -Verbose
 
 In this example, it is to remove the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription except the storage accounts in the 'securitydata' resource group.
@@ -45,7 +64,7 @@ Get-AzureUtilEmptyResourceGroup
 function Get-AzureUtilNonAttachedUnmanagedDisk
 {
     [CmdletBinding()]
-    [OutputType([Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob])]
+    [OutputType([PSCustomObject])]
     param (
         [Parameter(Mandatory = $false)][ValidateNotNullOrEmpty()]
         [string[]] $ExcludeResourceGroup
@@ -71,8 +90,9 @@ function Get-AzureUtilNonAttachedUnmanagedDisk
             # Exclude the non target resource groups.
             if ($ExcludeResourceGroup -notcontains $_.ResourceGroupName)
             {
-                $resourceGroupName = $_.ResourceGroupName
-                $storageAccountName = $_.StorageAccountName
+                $storageAccount = $_
+                $resourceGroupName = $storageAccount.ResourceGroupName
+                $storageAccountName = $storageAccount.StorageAccountName
                 Write-Verbose -Message ('Scanning SA:{0} in RG:{1}' -f $storageAccountName,$resourceGroupName)
 
                 $storageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName).Value | Select-Object -First 1
@@ -94,7 +114,24 @@ function Get-AzureUtilNonAttachedUnmanagedDisk
                                 # Verify that it is a non-attached VHD.
                                 if ($blobUri.EndsWith('.vhd') -and ($attachedVhdUris -notcontains $blobUri))
                                 {
-                                    $_
+                                    [PSCustomObject] @{
+                                        ResourceGroupName  = $resourceGroupName
+                                        StorageAccountName = $storageAccountName
+                                        Location           = $storageAccount.Location
+                                        Sku                = $storageAccount.Sku
+                                        ContainerName      = $containerName
+                                        Name               = $_.Name
+                                        ICloudBlob         = $_.ICloudBlob
+                                        BlobType           = $_.BlobType
+                                        Length             = $_.Length
+                                        ContentType        = $_.ContentType
+                                        LastModified       = $_.LastModified
+                                        SnapshotTime       = $_.SnapshotTime
+                                        ContinuationToken  = $_.ContinuationToken
+                                        Context            = $_.Context
+                                        StorageAccount     = $storageAccount
+                                    }
+
                                     $nonAttachedVhdCount++
                                 }
                             }
