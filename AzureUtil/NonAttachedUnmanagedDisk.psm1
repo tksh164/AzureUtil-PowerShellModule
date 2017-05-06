@@ -75,7 +75,7 @@ function Get-AzureUtilNonAttachedUnmanagedDisk
                 $storageAccountName = $_.StorageAccountName
                 Write-Verbose -Message ('Scanning SA:{0} in RG:{1}' -f $storageAccountName,$resourceGroupName)
 
-                $storageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName).Value[0]
+                $storageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName).Value | Select-Object -First 1
                 $context = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
                 $nonAttachedVhdCount = 0
 
