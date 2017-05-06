@@ -1,7 +1,4 @@
 # AzureUtil PowerShell Module
-Utility cmdlets for Azure management operations.
-
-# AzureArmTemplateHelper PowerShell Module
 This is a PowerShell module that is collection of utility cmdlets for Azure management operations.
 
 - [Get-AzureUtilEmptyResourceGroup cmdlet](#get-azureutilemptyresourcegroup-cmdlet)
