@@ -128,7 +128,9 @@ PrivateData = @{
             'ManagedDisks',
             'RDCMan',
             'RemoteDesktopConnectionManager',
-            'rdg'
+            'rdg',
+            'RemoteDesktop',
+            'RDP'
         )
 
         # A URL to the license for this module.
