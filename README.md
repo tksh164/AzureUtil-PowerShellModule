@@ -186,3 +186,7 @@ PS > Out-AzureUtilRdcManRdgFile -ResourceGroupName 'Prod-RG','Dev-RG' -FilePath 
 
 ### [1.0.2](https://github.com/tksh164/AzureUtil-PowerShellModule/releases/tag/1.0.2)
 - Initial release.
+
+
+## License
+This project is [licensed under MIT](https://github.com/tksh164/AzureUtil-PowerShellModule/blob/master/LICENSE).
