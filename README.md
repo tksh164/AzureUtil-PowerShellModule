@@ -185,6 +185,16 @@ PS > Out-AzureUtilRdcManRdgFile -ResourceGroupName 'Prod-RG','Dev-RG' -FilePath 
 - Some fixes.
 
 ### [1.0.2](https://github.com/tksh164/AzureUtil-PowerShellModule/releases/tag/1.0.2)
+- Added Out-AzureUtilRdcManRdgFile cmdlet.
+- Changed cmdlet name from "Get-AzureUtilNonAttachedNonManagedDisk" to "Get-AzureUtilNonAttachedUnmanagedDisk".
+- Added some new parameters.
+- Refactored the module implementation.
+- Updated help.
+
+### 1.0.1
+- Some fixes.
+
+### 1.0.0
 - Initial release.
 
 
