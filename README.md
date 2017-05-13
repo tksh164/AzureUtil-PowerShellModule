@@ -199,4 +199,4 @@ PS > Out-AzureUtilRdcManRdgFile -ResourceGroupName 'Prod-RG','Dev-RG' -FilePath 
 
 
 ## License
-This project is [licensed under MIT](https://github.com/tksh164/AzureUtil-PowerShellModule/blob/master/LICENSE).
+This project is licensed under the [MIT](https://github.com/tksh164/AzureUtil-PowerShellModule/blob/master/LICENSE) license.
