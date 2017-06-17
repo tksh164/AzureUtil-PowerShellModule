@@ -3,6 +3,8 @@
 #requires -Modules @{ ModuleName='AzureRM.Profile'; ModuleVersion='2.6.0' }
 #requires -Modules @{ ModuleName='AzureRM.Resources'; ModuleVersion='3.6.0' }
 
+Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'Internal.Common.psm1' -Resolve)
+
 <#
 .SYNOPSIS
 Get the resource groups that not contains any resources from the entire subscription.
@@ -73,7 +75,7 @@ function Get-AzureUtilEmptyResourceGroup
     )
 
     # Login check.
-    try { [void] (Get-AzureRMContext -ErrorAction Stop) } catch { throw }
+    PreventUnloggedExecution
 
     # Normalize the exclude locations.
     if ($PSBoundParameters.ContainsKey('ExcludeLocation'))

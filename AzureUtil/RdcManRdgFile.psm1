@@ -5,6 +5,8 @@
 #requires -Modules @{ ModuleName='AzureRM.Compute'; ModuleVersion='2.7.0' }
 #requires -Modules @{ ModuleName='AzureRM.Network'; ModuleVersion='3.5.0' }
 
+Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'Internal.Common.psm1' -Resolve)
+
 <#
 .SYNOPSIS
 Create a ".rdg" file for Azure Windows virtual machine connection.
@@ -56,7 +58,7 @@ function Out-AzureUtilRdcManRdgFile
     )
 
     # Login check.
-    try { [void] (Get-AzureRMContext -ErrorAction Stop) } catch { throw }
+    PreventUnloggedExecution
 
     # Create a new XML document.
     $xmlDoc = CreateRdgFileXmlDoc -RootGroupName $RootGroupName
