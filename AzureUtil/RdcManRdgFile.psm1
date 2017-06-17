@@ -226,7 +226,7 @@ function CreateServerElement
 function GetRdpConnectionInfo
 {
     [CmdletBinding()]
-    [OutputType([PSCustomObject])]
+    [OutputType([pscustomobject])]
     param (
         [Parameter(Mandatory = $true)][ValidateNotNullOrEmpty()]
         [string[]] $ResourceGroupName
@@ -241,7 +241,7 @@ function GetRdpConnectionInfo
                     $vm = $_
 
                     # The values container.
-                    $connectionInfo = [PSCustomObject] @{
+                    $connectionInfo = [pscustomobject] @{
                         ResourceGroupName = $vm.ResourceGroupName
                         VmName            = $vm.Name
                         AdminUsername     = $vm.OSProfile.AdminUsername
