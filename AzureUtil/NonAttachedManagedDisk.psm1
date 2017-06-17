@@ -2,6 +2,8 @@
 #requires -Modules @{ ModuleName='AzureRM.Profile'; ModuleVersion='2.6.0' }
 #requires -Modules @{ ModuleName='AzureRM.Compute'; ModuleVersion='2.7.0' }
 
+Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'Internal.Common.psm1' -Resolve)
+
 <#
 .SYNOPSIS
 Get the managed disks that non-attached to any virtual machines from the entire subscription.
@@ -49,7 +51,7 @@ function Get-AzureUtilNonAttachedManagedDisk
     )
 
     # Login check.
-    try { [void] (Get-AzureRMContext -ErrorAction Stop) } catch { throw }
+    PreventUnloggedExecution
 
     # List non-attached managed disks.
     (Get-AzureRmDisk).ToArray() |

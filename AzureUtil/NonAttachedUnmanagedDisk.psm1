@@ -5,6 +5,8 @@
 #requires -Modules @{ ModuleName='Azure.Storage'; ModuleVersion='2.6.0' }
 #requires -Modules @{ ModuleName='AzureRM.Storage'; ModuleVersion='2.6.0' }
 
+Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'Internal.Common.psm1' -Resolve)
+
 <#
 .SYNOPSIS
 Get the unmanaged disks (VHDs/Blobs) that non-attached to any virtual machines from the entire subscription.
@@ -71,7 +73,7 @@ function Get-AzureUtilNonAttachedUnmanagedDisk
     )
 
     # Login check.
-    try { [void] (Get-AzureRMContext -ErrorAction Stop) } catch { throw }
+    PreventUnloggedExecution
 
     # Get the all attached VHD URIs from the VM configurations.
     Write-Verbose -Message ('Get all attached VHD URI...')
