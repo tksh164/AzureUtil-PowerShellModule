@@ -1,3 +1,6 @@
+#requires -Version 5
+#requires -Modules @{ ModuleName='AzureRM.Profile'; ModuleVersion='2.6.0' }
+
 function PreventUnloggedExecution
 {
     try {
