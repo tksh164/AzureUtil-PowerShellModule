@@ -103,6 +103,7 @@ AliasesToExport = @()
 FileList = @(
     'AzureUtil.psd1',
     'AzureUtil.psm1',
+    'Internal.Common.psm1',
     'EmptyResourceGroup.psm1',
     'NonAttachedManagedDisk.psm1',
     'NonAttachedUnmanagedDisk.psm1',
