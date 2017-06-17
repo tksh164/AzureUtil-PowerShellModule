@@ -66,7 +66,7 @@ Get-AzureUtilEmptyResourceGroup
 function Get-AzureUtilNonAttachedUnmanagedDisk
 {
     [CmdletBinding()]
-    [OutputType([PSCustomObject])]
+    [OutputType([pscustomobject])]
     param (
         [Parameter(Mandatory = $false)][ValidateNotNullOrEmpty()]
         [string[]] $ExcludeResourceGroup
@@ -116,7 +116,7 @@ function Get-AzureUtilNonAttachedUnmanagedDisk
                                 # Verify that it is a non-attached VHD.
                                 if ($blobUri.EndsWith('.vhd') -and ($attachedVhdUris -notcontains $blobUri))
                                 {
-                                    [PSCustomObject] @{
+                                    [pscustomobject] @{
                                         ResourceGroupName  = $resourceGroupName
                                         StorageAccountName = $storageAccountName
                                         Location           = $storageAccount.Location
