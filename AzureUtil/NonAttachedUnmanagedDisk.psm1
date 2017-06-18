@@ -20,11 +20,13 @@ This cmdlet is ignore the resource groups that provided by this parameter. This 
 .EXAMPLE
     Get-AzureUtilNonAttachedUnmanagedDisk -Verbose
 
+---- Example Description ----
 In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription.
 
 .EXAMPLE
     Get-AzureUtilNonAttachedUnmanagedDisk -ExcludeResourceGroup 'TemplateStore-RG','securitydata' -Verbose
 
+---- Example Description ----
 In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription except the storage accounts in the "TemplateStore-RG" and "securitydata" resource groups.
 
 .EXAMPLE
@@ -44,11 +46,13 @@ In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) 
     ProjectB-RG    vm2sa1310       japaneast StandardLRS vhd       osdisk.vhd          127 5/5/2017 2:22:10 PM +00:00
     Test-RG        premsa          japaneast PremiumLRS  vhd       osdisk.vhd          127 5/5/2017 3:52:45 PM +00:00
 
+---- Example Description ----
 In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription except the storage accounts in the "securitydata" resource group. The results is formatted as table style in this example.
 
 .EXAMPLE
     Get-AzureUtilNonAttachedUnmanagedDisk -ExcludeResourceGroup 'securitydata' -Verbose | Remove-AzureStorageBlob -Verbose
 
+---- Example Description ----
 In this example, it is to remove the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription except the storage accounts in the "securitydata" resource group.
 
 .LINK
