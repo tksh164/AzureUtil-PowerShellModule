@@ -80,6 +80,12 @@ In this example, checks whether the "Sample-RG" resource group exists using Azur
 ---- Example Description ----
 In this example, capture the "Sample-RG" resource group as a template. You can find this REST API details at https://docs.microsoft.com/en-us/rest/api/resources/resourcegroups#ResourceGroups_ExportTemplate.
 
+.EXAMPLE
+    PS C:\>Invoke-AzureUtilRestMethod -Uri '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/Sample-RG?api-version=2017-05-10'
+
+---- Example Description ----
+In this example, get the "Sample-RG" resource group information using Azure REST API with abbreviated URI. This cmdlet is automaticaly prepend "https://management.azure.com" to URI if Uri parameter starts with "/subscriptions/".
+
 .LINK
 PowerShell Gallery: https://www.powershellgallery.com/packages/AzureUtil/
 
@@ -132,6 +138,12 @@ function Invoke-AzureUtilRestMethod
     if ($tokenCacheItem -eq $null)
     {
         throw 'Please re-login by run Login-AzureRmAccount.'
+    }
+
+    # Build the full URI if it is abbreviated.
+    if ($Uri.OriginalString.StartsWith('/subscriptions/'))
+    {
+        $Uri = [uri] ('https://management.azure.com' + $Uri.OriginalString)
     }
 
     #
