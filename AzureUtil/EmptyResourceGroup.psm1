@@ -1,7 +1,7 @@
 #requires -Version 5
 #requires -Modules @{ ModuleName='Microsoft.PowerShell.Utility'; ModuleVersion='3.1.0.0' }
-#requires -Modules @{ ModuleName='AzureRM.Profile'; ModuleVersion='2.6.0' }
-#requires -Modules @{ ModuleName='AzureRM.Resources'; ModuleVersion='3.6.0' }
+#requires -Modules @{ ModuleName='AzureRM.Profile'; ModuleVersion='3.1.0' }
+#requires -Modules @{ ModuleName='AzureRM.Resources'; ModuleVersion='4.1.0' }
 
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'Internal.Common.psm1' -Resolve)
 

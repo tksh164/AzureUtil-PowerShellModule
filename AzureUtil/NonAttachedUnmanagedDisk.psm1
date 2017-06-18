@@ -1,9 +1,9 @@
 #requires -Version 5
 #requires -Modules @{ ModuleName='Microsoft.PowerShell.Utility'; ModuleVersion='3.1.0.0' }
-#requires -Modules @{ ModuleName='AzureRM.Profile'; ModuleVersion='2.6.0' }
-#requires -Modules @{ ModuleName='AzureRM.Compute'; ModuleVersion='2.7.0' }
-#requires -Modules @{ ModuleName='Azure.Storage'; ModuleVersion='2.6.0' }
-#requires -Modules @{ ModuleName='AzureRM.Storage'; ModuleVersion='2.6.0' }
+#requires -Modules @{ ModuleName='AzureRM.Profile'; ModuleVersion='3.1.0' }
+#requires -Modules @{ ModuleName='AzureRM.Compute'; ModuleVersion='3.1.0' }
+#requires -Modules @{ ModuleName='Azure.Storage'; ModuleVersion='3.1.0' }
+#requires -Modules @{ ModuleName='AzureRM.Storage'; ModuleVersion='3.1.0' }
 
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'Internal.Common.psm1' -Resolve)
 
