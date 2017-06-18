@@ -21,6 +21,7 @@ This cmdlet is ignore the resource groups that has location provided by this par
 .EXAMPLE
     Get-AzureUtilEmptyResourceGroup
 
+---- Example Description ----
 This example is get the all empty resource groups in current subscription.
 
 .EXAMPLE
@@ -33,21 +34,25 @@ This example is get the all empty resource groups in current subscription.
     Prod-RG           japaneast
     Test-RG           japanwest
 
+---- Example Description ----
 This example is get the all empty resource groups in current subscription.
 
 .EXAMPLE
     Get-AzureUtilEmptyResourceGroup -ExcludeLocation 'japaneast','Japan West'
 
+---- Example Description ----
 In this example, it is to get the all empty resource groups in the current subscription except the resource group's location is "japaneast" or "Japan West".
 
 .EXAMPLE
     Get-AzureUtilEmptyResourceGroup -ExcludeResourceGroup 'ProjectA-RG','ProjectB-RG' | Remove-AzureRmResourceGroup -Force
 
+---- Example Description ----
 In this example, it is to remove the all empty resource groups in the current subscription except the "ProjectA-RG" and "ProjectB-RG" resource groups. Those resource groups are not included to remove even if those were empty.
 
 .EXAMPLE
     Get-AzureUtilEmptyResourceGroup -ExcludeResourceGroup 'Prod-RG' -ExcludeLocation 'Japan West'
 
+---- Example Description ----
 In this example, it is to get the all empty resource groups in the current subscription except the resource group that is name is "Prod-RG" or location is "Japan West".
 
 .LINK

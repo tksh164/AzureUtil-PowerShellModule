@@ -26,11 +26,13 @@ Display name for the root node of the ".rdg" file. This parameter is optional. T
 .EXAMPLE
     Out-AzureUtilRdcManRdgFile -ResourceGroupName 'Prod-RG','Dev-RG'
 
+---- Example Description ----
 This example is creates ".rdg" file in current folder. The ".rdg" file contains connections for Azure Windows virtual machine in resource group "Prod-RG" and "Dev-RG".
 
 .EXAMPLE
     Out-AzureUtilRdcManRdgFile -ResourceGroupName 'Prod-RG','Dev-RG' -FilePath 'C:\NewProject.rdg' -RootGroupName 'NewProjectVMs'
 
+---- Example Description ----
 This example is creates ".rdg" file as "C:\NewProject.rdg". The ".rdg" file contains connections for Azure Windows virtual machine in resource group "Prod-RG" and "Dev-RG". The root node name of connections is "NewProjectVMs".
 
 .LINK
