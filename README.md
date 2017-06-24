@@ -6,6 +6,7 @@ This is a PowerShell module that is collection of utility cmdlets for Azure mana
 - [Get-AzureUtilNonAttachedUnmanagedDisk cmdlet](#get-azureutilnonattachedunmanageddisk-cmdlet)
 - [Out-AzureUtilRdcManRdgFile cmdlet](#out-azureutilrdcmanrdgfile-cmdlet)
 - [Invoke-AzureUtilRestMethod cmdlet](#invoke-azureutilrestmethod-cmdlet)
+- [Get-AzureUtilDatacenterIPRangeInfo cmdlet](#get-azureutildatacenteriprangeinfo-cmdlet)
 
 ## Install
 This module available on the [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureUtil/) page. You can install use the Install-Module cmdlet.
@@ -250,6 +251,55 @@ In this example, get the "Sample-RG" resource group information using Azure REST
 
 ```PowerShell
 PS C:\> Invoke-AzureUtilRestMethod -Uri '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/Sample-RG?api-version=2017-05-10'
+```
+
+## Get-AzureUtilDatacenterIPRangeInfo cmdlet
+This cmdlet provides quick lookup the Azure datacenter IP address range information from the specified public IP address.
+
+### Parameters
+
+Parameter Name | Description
+---------------|-------------------
+IPAddress      | Specify the public IP address you want to check.
+XmlFilePath    | Specify the file path of Azure datacenter IP address range XML file. This parameter is optional. The latest XML file is can download from [here](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
+
+### Examples
+
+#### Example 1
+In this example, get the region and IP address range information of the public IP address "13.73.24.96".
+
+```PowerShell
+PS > Get-AzureUtilDatacenterIPRangeInfo -IPAddress '13.73.24.96'
+
+IPAddress   RegionName IPRange
+---------   ---------- -------
+13.73.24.96 japaneast  13.73.0.0/19
+```
+
+#### Example 2
+In this example, get the region and IP address range information of the public IPs via piping.
+
+```PowerShell
+PS > '13.73.24.96','40.112.124.10','13.88.13.238' | Get-AzureUtilDatacenterIPRangeInfo
+
+IPAddress     RegionName IPRange
+---------     ---------- -------
+13.73.24.96   japaneast  13.73.0.0/19
+40.112.124.10 europewest 40.112.124.0/24
+13.88.13.238  uswest     13.88.0.0/19
+```
+
+#### Example 3
+In this example, get the region and IP address range information of the public IP address "13.73.24.96" using the local XML file. You can get the region and IP address range information on offline if use the local XML file.
+
+```PowerShell
+PS > $xmlFilePath = 'C:\PublicIPs_20170616.xml'
+
+PS > '13.73.24.96' | Get-AzureUtilDatacenterIPRangeInfo -XmlFilePath $xmlFilePath
+
+IPAddress   RegionName IPRange
+---------   ---------- -------
+13.73.24.96 japaneast  13.73.0.0/19
 ```
 
 ## Release Notes
