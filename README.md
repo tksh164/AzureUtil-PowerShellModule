@@ -335,6 +335,15 @@ True
 
 ## Release Notes
 
+### [1.0.4](https://github.com/tksh164/AzureUtil-PowerShellModule/releases/tag/1.0.4)
+- Added Invoke-AzureUtilRestMethod cmdlet.
+- Added Get-AzureUtilDatacenterIPRangeInfo cmdlet.
+- Added Test-AzureUtilDatacenterIPRange cmdlet.
+- Updated required version of Azure PowerShell modules.
+- Improved login check.
+- Updated help.
+- Some fixes.
+
 ### [1.0.3](https://github.com/tksh164/AzureUtil-PowerShellModule/releases/tag/1.0.3)
 - Some fixes.
 
