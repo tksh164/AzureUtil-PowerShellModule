@@ -7,6 +7,7 @@ This is a PowerShell module that is collection of utility cmdlets for Azure mana
 - [Out-AzureUtilRdcManRdgFile cmdlet](#out-azureutilrdcmanrdgfile-cmdlet)
 - [Invoke-AzureUtilRestMethod cmdlet](#invoke-azureutilrestmethod-cmdlet)
 - [Get-AzureUtilDatacenterIPRangeInfo cmdlet](#get-azureutildatacenteriprangeinfo-cmdlet)
+- [Test-AzureUtilDatacenterIPRange cmdlet](#test-azureutildatacenteriprange-cmdlet)
 
 ## Install
 This module available on the [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureUtil/) page. You can install use the Install-Module cmdlet.
@@ -300,6 +301,36 @@ PS > '13.73.24.96' | Get-AzureUtilDatacenterIPRangeInfo -XmlFilePath $xmlFilePat
 IPAddress   RegionName IPRange
 ---------   ---------- -------
 13.73.24.96 japaneast  13.73.0.0/19
+```
+
+## Test-AzureUtilDatacenterIPRange cmdlet
+This cmdlet provides quick test to see if the specified IP address is Azure's public IP address.
+
+### Parameters
+
+Parameter Name | Description
+---------------|-------------------
+IPAddress      | Specify the public IP address you want to check.
+XmlFilePath    | Specify the file path of Azure datacenter IP address range XML file. This parameter is optional. The latest XML file is can download from [here](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
+
+### Examples
+
+#### Example 1
+In this example, test the public IP address "13.73.24.96" then confirmed it is Azure's public IP address.
+
+```PowerShell
+PS > Test-AzureUtilDatacenterIPRange -IPAddress '13.73.24.96'
+True
+```
+
+#### Example 2
+In this example, test the public IP address "40.112.124.10" using the local XML file then confirmed it is Azure's public IP address.
+
+```PowerShell
+PS > $xmlFilePath = 'C:\PublicIPs_20170616.xml'
+
+PS > Test-AzureUtilDatacenterIPRange -IPAddress '40.112.124.10' -XmlFilePath $xmlFilePath 
+True
 ```
 
 ## Release Notes
