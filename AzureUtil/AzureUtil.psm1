@@ -3,3 +3,4 @@ Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'NonAttachedManage
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'NonAttachedUnmanagedDisk.psm1' -Resolve)
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'RdcManRdgFile.psm1' -Resolve)
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'RestMethod.psm1' -Resolve)
+Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'DatacenterIPRangeInfo.psm1' -Resolve)
