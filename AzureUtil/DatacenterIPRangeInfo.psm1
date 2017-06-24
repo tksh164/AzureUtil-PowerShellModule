@@ -113,6 +113,62 @@ function GetSubnetMaskAsUInt32
     [uint32] $mask
 }
 
+<#
+.SYNOPSIS
+Get the Azure datacenter IP address range information of specified public IP address.
+
+.DESCRIPTION
+This cmdlet provides quick lookup the Azure datacenter IP address range information from the specified public IP address.
+
+.PARAMETER IPAddress
+Specify the public IP address you want to check.
+
+.PARAMETER XmlFilePath
+Specify the file path of Azure datacenter IP address range XML file. The latest XML file is can download from https://www.microsoft.com/en-us/download/details.aspx?id=41653. This parameter is optional.
+
+.EXAMPLE
+    PS > Get-AzureUtilDatacenterIPRangeInfo -IPAddress '13.73.24.96'
+
+    IPAddress   RegionName IPRange
+    ---------   ---------- -------
+    13.73.24.96 japaneast  13.73.0.0/19
+
+---- Example Description ----
+In this example, get the region and IP address range information of the public IP address "13.73.24.96".
+
+.EXAMPLE
+    PS > '13.73.24.96','40.112.124.10','13.88.13.238' | Get-AzureUtilDatacenterIPRangeInfo
+
+    IPAddress     RegionName IPRange
+    ---------     ---------- -------
+    13.73.24.96   japaneast  13.73.0.0/19
+    40.112.124.10 europewest 40.112.124.0/24
+    13.88.13.238  uswest     13.88.0.0/19
+
+---- Example Description ----
+In this example, get the region and IP address range information of the public IPs via piping.
+
+.EXAMPLE
+    PS > $xmlFilePath = 'C:\PublicIPs_20170616.xml'
+
+    PS > '13.73.24.96' | Get-AzureUtilDatacenterIPRangeInfo -XmlFilePath $xmlFilePath
+
+    IPAddress   RegionName IPRange
+    ---------   ---------- -------
+    13.73.24.96 japaneast  13.73.0.0/19
+
+---- Example Description ----
+In this example, get the region and IP address range information of the public IP address "13.73.24.96" using the local XML file. You can get the region and IP address range information on offline if use the local XML file.
+
+.LINK
+PowerShell Gallery: https://www.powershellgallery.com/packages/AzureUtil/
+
+.LINK
+GitHub: https://github.com/tksh164/AzureUtil-PowerShellModule
+
+.LINK
+Microsoft Azure Datacenter IP Ranges: https://www.microsoft.com/en-us/download/details.aspx?id=41653
+#>
 function Get-AzureUtilDatacenterIPRangeInfo
 {
     [CmdletBinding()]
@@ -192,6 +248,44 @@ function Get-AzureUtilDatacenterIPRangeInfo
     {}
 }
 
+<#
+.SYNOPSIS
+Test whether the specific public IP address that it is Azure public IP address.
+
+.DESCRIPTION
+This cmdlet provides quick test to see if the specified IP address is Azure's public IP address.
+
+.PARAMETER IPAddress
+Specify the public IP address you want to check.
+
+.PARAMETER XmlFilePath
+Specify the file path of Azure datacenter IP address range XML file. The latest XML file is can download from https://www.microsoft.com/en-us/download/details.aspx?id=41653. This parameter is optional.
+
+.EXAMPLE
+    PS > Test-AzureUtilDatacenterIPRange -IPAddress '13.73.24.96'
+    True
+
+---- Example Description ----
+In this example, test the public IP address "13.73.24.96" then confirmed it is Azure's public IP address.
+
+.EXAMPLE
+    PS > $xmlFilePath = 'C:\PublicIPs_20170616.xml'
+
+    PS > Test-AzureUtilDatacenterIPRange -IPAddress '40.112.124.10' -XmlFilePath $xmlFilePath 
+    True
+
+---- Example Description ----
+In this example, test the public IP address "40.112.124.10" using the local XML file then confirmed it is Azure's public IP address.
+
+.LINK
+PowerShell Gallery: https://www.powershellgallery.com/packages/AzureUtil/
+
+.LINK
+GitHub: https://github.com/tksh164/AzureUtil-PowerShellModule
+
+.LINK
+Microsoft Azure Datacenter IP Ranges: https://www.microsoft.com/en-us/download/details.aspx?id=41653
+#>
 function Test-AzureUtilDatacenterIPRange
 {
     [CmdletBinding()]
