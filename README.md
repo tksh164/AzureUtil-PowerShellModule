@@ -2,12 +2,19 @@
 This is a PowerShell module that is collection of utility cmdlets for Azure management operations.
 
 - [Get-AzureUtilEmptyResourceGroup cmdlet](#get-azureutilemptyresourcegroup-cmdlet)
+    - This cmdlet is get the resource groups that not contains any resources from the entire subscription.
 - [Get-AzureUtilNonAttachedManagedDisk cmdlet](#get-azureutilnonattachedmanageddisk-cmdlet)
+    - This cmdlet gets the managed disks that non-attached to any virtual machines from the entire subscription.
 - [Get-AzureUtilNonAttachedUnmanagedDisk cmdlet](#get-azureutilnonattachedunmanageddisk-cmdlet)
+    - This cmdlet gets the unmanaged disks (VHDs/Blobs) that non-attached to any virtual machines from the entire subscription.
 - [Out-AzureUtilRdcManRdgFile cmdlet](#out-azureutilrdcmanrdgfile-cmdlet)
+    - This cmdlet creates a ".rdg" file for Azure Windows virtual machine connection. The ".rdg" file is can open by [Remote Desktop Connection Manager](https://www.microsoft.com/en-us/download/details.aspx?id=44989).
 - [Invoke-AzureUtilRestMethod cmdlet](#invoke-azureutilrestmethod-cmdlet)
+    - This cmdlet sends HTTP and HTTPS requests to Azure REST API service endpoints that returns structured data.
 - [Get-AzureUtilDatacenterIPRangeInfo cmdlet](#get-azureutildatacenteriprangeinfo-cmdlet)
+    - This cmdlet provides quick lookup the Azure datacenter IP address range information from the specified public IP address.
 - [Test-AzureUtilDatacenterIPRange cmdlet](#test-azureutildatacenteriprange-cmdlet)
+    - This cmdlet provides quick test to see if the specified IP address is Azure's public IP address.
 
 ## Install
 This module available on the [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureUtil/) page. You can install use the Install-Module cmdlet.
