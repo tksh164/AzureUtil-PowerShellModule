@@ -53,6 +53,7 @@ CLRVersion = '4.0.30319.42000'
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(
     'Microsoft.PowerShell.Utility',
+    'Microsoft.PowerShell.Management',
     'AzureRM.Profile',
     'AzureRM.Resources',
     'AzureRM.Compute',
@@ -84,7 +85,9 @@ FunctionsToExport = @(
     'Out-AzureUtilRdcManRdgFile',
     'Invoke-AzureUtilRestMethod',
     'Get-AzureUtilDatacenterIPRangeInfo',
-    'Test-AzureUtilDatacenterIPRange'
+    'Test-AzureUtilDatacenterIPRange',
+    'Set-AzureUtilArmTemplateFile',
+    'Get-AzureUtilArmTemplateDeployUri'
 )
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
@@ -112,7 +115,9 @@ FileList = @(
     'NonAttachedUnmanagedDisk.psm1',
     'RdcManRdgFile.psm1',
     'RestMethod.psm1',
-    'DatacenterIPRangeInfo.psm1'
+    'DatacenterIPRangeInfo.psm1',
+    'ArmTemplateFile.psm1',
+    'ArmTemplateDeployUri.psm1'
 )
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
@@ -142,7 +147,10 @@ PrivateData = @{
             'Datacenter',
             'Region',
             'IP',
-            'IPAddress'
+            'IPAddress',
+            'Template',
+            'ARMTemplate',
+            'Deploy'
         )
 
         # A URL to the license for this module.
@@ -160,6 +168,7 @@ PrivateData = @{
         # External dependent modules of this module.
         ExternalModuleDependencies = @(
             'Microsoft.PowerShell.Utility',
+            'Microsoft.PowerShell.Management',
             'AzureRM.Profile',
             'AzureRM.Resources',
             'AzureRM.Compute',
