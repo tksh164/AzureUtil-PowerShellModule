@@ -20,6 +20,12 @@ PS > Install-Module -Name AzureUtil
 - [Get-AzureUtilNonAttachedUnmanagedDisk cmdlet](#get-azureutilnonattachedunmanageddisk-cmdlet)
     - This cmdlet gets the unmanaged disks (VHDs/Blobs) that non-attached to any virtual machines from the entire subscription.
 
+### ARM Template Creation
+- [Set-AzureUtilArmTemplateFile cmdlet](#set-azureutilarmtemplatefile-cmdlet)
+    - This cmdlet helping to ARM template making by upload the ARM template files on local filesystem to blob storage of Azure storage. When you making linked ARM template, this cmdlet is especially helpful.
+- [Get-AzureUtilArmTemplateDeployUri cmdlet](#get-azureutilarmtemplatedeployuri-cmdlet)
+    - This cmdlet building the URL that is access to custom deployment blade on Azure Portal. The URL allows deployment of your ARM template via Azure Portal.
+
 ### Azure REST API
 - [Invoke-AzureUtilRestMethod cmdlet](#invoke-azureutilrestmethod-cmdlet)
     - This cmdlet sends HTTP and HTTPS requests to Azure REST API service endpoints that returns structured data.
@@ -347,6 +353,66 @@ PS > $xmlFilePath = 'C:\PublicIPs_20170616.xml'
 
 PS > Test-AzureUtilDatacenterIPRange -IPAddress '40.112.124.10' -XmlFilePath $xmlFilePath 
 True
+```
+
+## Set-AzureUtilArmTemplateFile cmdlet
+This cmdlet helping to ARM template making by upload the ARM template files on local filesystem to blob storage of Azure storage. When you making linked ARM template, this cmdlet is especially helpful.
+
+### Parameters
+
+Parameter Name     | Description
+-------------------|-------------------
+LocalBasePath      | The path of the folder on local filesystem that contains the ARM templates.
+StorageAccountName | The storage account name to upload the ARM templates.
+ResourceGroupName  | The resource group name that it contains the storage account of StorageAccountName parameter.
+StorageAccountKey  | The storage account key for storage account of StorageAccountName parameter.
+ContainerName      | The container name to upload the ARM templates. This parameter is optional. Default container name is 'armtemplate'.
+Force              | This switch parameter is optional. If you use this switch, overwrite the existing ARM templates in the container.
+
+### Examples
+
+#### Example 1
+This example is upload the ARM template files from under 'C:\TemplateWork' folder with recursive. You need execute Login-AzureRmAccount cmdlet before execute this cmdlet because this example use ResourceGroupName parameter.
+
+```PowerShell
+PS > Set-AzureUtilArmTemplateFile -LocalBasePath 'C:\TemplateWork' -StorageAccountName 'abcd1234' -ResourceGroupName 'ArmTemplateDev-RG' -Force
+```
+
+#### Example 2
+This example is upload the ARM template files from under 'C:\TemplateWork' folder with recursive.
+
+```PowerShell
+PS > Set-AzureUtilArmTemplateFile -LocalBasePath 'C:\TemplateWork' -StorageAccountName 'abcd1234' -StorageAccountKey 'dWLe7OT3P0HevzLeKzRlk4j4eRws7jHStp0C4XJtQJhuH4p5EOP+vLcK1w8sZ3QscGLy50DnOzQoiUbpzXD9Jg==' -Force
+```
+
+## Get-AzureUtilArmTemplateDeployUri cmdlet
+This cmdlet building the URL that is access to custom deployment blade on Azure Portal. The URL allows deployment of your ARM template via Azure Portal.
+
+### Parameters
+
+Parameter Name  | Description
+----------------|-------------------
+TemplateUri     | The URI of your ARM template.
+ShowDeployBlade | This switch parameter is optional. If you use this switch, this cmdlet open the URL by your browser.
+
+### Examples
+
+#### Example 1
+This example is build the URL of custom deployment blade from your ARM template URL.
+
+```PowerShell
+PS > Get-AzureUtilArmTemplateDeployUri -TemplateUri 'https://abcd1234.blob.core.windows.net/armtemplate/main.json'
+
+Uri
+---
+https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fabcd1234.blob.core.windows.net%2Farmtemplate%2Fmain.json
+```
+
+#### Example 2
+This example is build the URL of custom deployment blade from your ARM template URL and open that URL by your browser.
+
+```PowerShell
+PS > Get-AzureUtilArmTemplateDeployUri -TemplateUri 'https://abcd1234.blob.core.windows.net/armtemplate/main.json' -ShowDeployBlade
 ```
 
 ## Release Notes

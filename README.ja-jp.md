@@ -20,6 +20,12 @@ PS > Install-Module -Name AzureUtil
 - [Get-AzureUtilNonAttachedUnmanagedDisk cmdlet](#get-azureutilnonattachedunmanageddisk-cmdlet)
     - このコマンドレットは、サブスクリプション内にあるどの仮想マシンにも接続されていない非管理ディスク (VHD/Blob) を取得します。
 
+### ARM テンプレート作成
+- [Set-AzureUtilArmTemplateFile cmdlet](#set-azureutilarmtemplatefile-cmdlet)
+    - This cmdlet helping to ARM template making by upload the ARM template files on local filesystem to blob storage of Azure storage. When you making linked ARM template, this cmdlet is especially helpful.
+- [Get-AzureUtilArmTemplateDeployUri cmdlet](#get-azureutilarmtemplatedeployuri-cmdlet)
+    - This cmdlet building the URL that is access to custom deployment blade on Azure Portal. The URL allows deployment of your ARM template via Azure Portal.
+
 ### Azure REST API
 - [Invoke-AzureUtilRestMethod cmdlet](#invoke-azureutilrestmethod-cmdlet)
     - このコマンドレットは、構造化データを返す Azure REST API サービス エンドポイントに HTTP や HTTPS のリクエストを送信します。
@@ -347,6 +353,66 @@ PS > $xmlFilePath = 'C:\PublicIPs_20170616.xml'
 
 PS > Test-AzureUtilDatacenterIPRange -IPAddress '40.112.124.10' -XmlFilePath $xmlFilePath 
 True
+```
+
+## Set-AzureUtilArmTemplateFile コマンドレット
+このコマンドレットはローカル ファイルシステム上の ARM テンプレート ファイルを Azure ストレージの BLOB ストレージにアップロードすることで ARM テンプレート作成を支援します。このコマンドレットは、リンクされた ARM テンプレートを作成する場合に特に便利です。
+
+### パラメーター
+
+パラメーター名     | 説明
+-------------------|-------------------
+LocalBasePath      | ARM テンプレートが保存されているローカル ファイルシステム上のフォルダーのパスです。
+StorageAccountName | ARM テンプレートをアップロードするストレージ アカウントの名前です。
+ResourceGroupName  | StorageAccountName パラメーターで指定したストレージ アカウントが含まれているリソース グループの名前です。
+StorageAccountKey  | StorageAccountName パラメーターで指定したストレージ アカウントのストレージ アカウント キーです。
+ContainerName      | ARM テンプレートをアップロードするコンテナーの名前です。このパラメーターは省略可能です。既定のコンテナー名は 'armtemplate' です。
+Force              | このスイッチ パラメーターは省略可能です。このスイッチ パラメーターを使用した場合、コンテナー内に既に存在する ARM テンプレートを上書きします。
+
+### 例
+
+#### 例 1
+この例は、'C:\TemplateWork' フォルダー配下の ARM テンプレート ファイルを再帰的にアップロードします。この例では ResourceGroupName パラメーターを使用しているため、このコマンドレットを実行する前に Login-AzureRmAccount を実行しておく必要があります。
+
+```PowerShell
+PS > Set-AzureUtilArmTemplateFile -LocalBasePath 'C:\TemplateWork' -StorageAccountName 'abcd1234' -ResourceGroupName 'ArmTemplateDev-RG' -Force
+```
+
+#### 例 2
+この例は、'C:\TemplateWork' フォルダー配下の ARM テンプレート ファイルを再帰的にアップロードします。
+
+```PowerShell
+PS > Set-AzureUtilArmTemplateFile -LocalBasePath 'C:\TemplateWork' -StorageAccountName 'abcd1234' -StorageAccountKey 'dWLe7OT3P0HevzLeKzRlk4j4eRws7jHStp0C4XJtQJhuH4p5EOP+vLcK1w8sZ3QscGLy50DnOzQoiUbpzXD9Jg==' -Force
+```
+
+## Get-AzureUtilArmTemplateDeployUri コマンドレット
+このコマンドレットは Azure ポータル上のカスタム デプロイ ブレードにアクセスするための URL を作成します。その URL は ARM テンプレートを Azure ポータルからデプロイ可能にします。
+
+### パラメーター
+
+パラメーター名  | 説明
+----------------|-------------------
+TemplateUri     | ARM テンプレートの URI です。
+ShowDeployBlade | このスイッチ パラメーターは省略可能です。このスイッチ パラメーターを使用した場合、このコマンドレットは URL をブラウザーで開きます。
+
+### 例
+
+#### 例 1
+この例は、ARM テンプレート URI からカスタム デプロイ ブレードの URL を作成します。
+
+```PowerShell
+PS > Get-AzureUtilArmTemplateDeployUri -TemplateUri 'https://abcd1234.blob.core.windows.net/armtemplate/main.json'
+
+Uri
+---
+https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fabcd1234.blob.core.windows.net%2Farmtemplate%2Fmain.json
+```
+
+#### 例 2
+この例は、ARM テンプレート URI からカスタム デプロイ ブレードの URL を作成し、その URL をブラウザーで開きます。
+
+```PowerShell
+PS > Get-AzureUtilArmTemplateDeployUri -TemplateUri 'https://abcd1234.blob.core.windows.net/armtemplate/main.json' -ShowDeployBlade
 ```
 
 ## リリース ノート

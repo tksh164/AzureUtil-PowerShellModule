@@ -4,3 +4,5 @@ Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'NonAttachedUnmana
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'RdcManRdgFile.psm1' -Resolve)
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'RestMethod.psm1' -Resolve)
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'DatacenterIPRangeInfo.psm1' -Resolve)
+Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'ArmTemplateFile.psm1' -Resolve)
+Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'ArmTemplateDeployUri.psm1' -Resolve)
