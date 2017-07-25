@@ -22,9 +22,9 @@ PS > Install-Module -Name AzureUtil
 
 ### ARM テンプレート作成
 - [Set-AzureUtilArmTemplateFile cmdlet](#set-azureutilarmtemplatefile-cmdlet)
-    - This cmdlet helping to ARM template making by upload the ARM template files on local filesystem to blob storage of Azure storage. When you making linked ARM template, this cmdlet is especially helpful.
+    - このコマンドレットはローカル ファイルシステム上の ARM テンプレート ファイルを Azure ストレージの BLOB ストレージにアップロードすることで ARM テンプレート作成を支援します。このコマンドレットは、リンクされた ARM テンプレートを作成する場合に特に便利です。
 - [Get-AzureUtilArmTemplateDeployUri cmdlet](#get-azureutilarmtemplatedeployuri-cmdlet)
-    - This cmdlet building the URL that is access to custom deployment blade on Azure Portal. The URL allows deployment of your ARM template via Azure Portal.
+    - このコマンドレットは Azure ポータル上のカスタム デプロイ ブレードにアクセスするための URL を作成します。その URL は ARM テンプレートを Azure ポータルからデプロイ可能にします。
 
 ### Azure REST API
 - [Invoke-AzureUtilRestMethod cmdlet](#invoke-azureutilrestmethod-cmdlet)
