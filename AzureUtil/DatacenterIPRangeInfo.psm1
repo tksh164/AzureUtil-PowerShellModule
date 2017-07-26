@@ -1,6 +1,4 @@
-﻿#requires -Version 5
-
-function DownloadDatacenterIPRangeXml
+﻿function DownloadDatacenterIPRangeXml
 {
     [CmdletBinding()]
     [OutputType([xml])]

@@ -1,5 +1,3 @@
-#requires -Version 5
-
 function PreventUnloggedExecution
 {
     try {

@@ -1,5 +1,3 @@
-#requires -Version 5
-
 <#
 .SYNOPSIS
 Build the URL of custom deployment blade for your ARM template.

@@ -1,5 +1,3 @@
-#requires -Version 5
-
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'Internal.Common.psm1' -Resolve)
 
 <#
