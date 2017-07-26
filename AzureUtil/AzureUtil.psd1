@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = 'AzureUtil.psm1'
+#RootModule = ''
 
 # Version number of this module.
 ModuleVersion = '1.0.4'
@@ -75,7 +75,16 @@ RequiredModules = @(
 # FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-# NestedModules = @()
+NestedModules = @(
+    '.\EmptyResourceGroup.psm1',
+    '.\NonAttachedManagedDisk.psm1',
+    '.\NonAttachedUnmanagedDisk.psm1',
+    '.\RdcManRdgFile.psm1',
+    '.\RestMethod.psm1',
+    '.\DatacenterIPRangeInfo.psm1',
+    '.\ArmTemplateFile.psm1',
+    '.\ArmTemplateDeployUri.psm1'
+)
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @(
