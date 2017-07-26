@@ -1,8 +1,0 @@
-Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'EmptyResourceGroup.psm1' -Resolve)
-Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'NonAttachedManagedDisk.psm1' -Resolve)
-Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'NonAttachedUnmanagedDisk.psm1' -Resolve)
-Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'RdcManRdgFile.psm1' -Resolve)
-Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'RestMethod.psm1' -Resolve)
-Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'DatacenterIPRangeInfo.psm1' -Resolve)
-Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'ArmTemplateFile.psm1' -Resolve)
-Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'ArmTemplateDeployUri.psm1' -Resolve)

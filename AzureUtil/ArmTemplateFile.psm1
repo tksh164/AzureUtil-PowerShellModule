@@ -1,8 +1,3 @@
-#requires -Version 5
-#requires -Modules @{ ModuleName='Microsoft.PowerShell.Utility'; ModuleVersion='3.1.0.0' }
-#requires -Modules @{ ModuleName='Microsoft.PowerShell.Management'; ModuleVersion='3.1.0.0' }
-#requires -Modules @{ ModuleName='Azure.Storage'; ModuleVersion='3.1.0' }
-
 function CreateNewAzureStorageContainer
 {
     [OutputType([void])]
