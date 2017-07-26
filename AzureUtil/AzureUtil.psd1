@@ -52,14 +52,14 @@ CLRVersion = '4.0'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(
-    'Microsoft.PowerShell.Utility',
-    'Microsoft.PowerShell.Management',
-    'AzureRM.Profile',
-    'AzureRM.Resources',
-    'AzureRM.Compute',
-    'Azure.Storage',
-    'AzureRM.Storage',
-    'AzureRM.Network'
+    @{ ModuleName = 'Microsoft.PowerShell.Utility'; ModuleVersion = '3.1.0.0'; },
+    @{ ModuleName = 'Microsoft.PowerShell.Management'; ModuleVersion = '3.1.0.0'; },
+    @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '3.1.0'; },
+    @{ ModuleName = 'AzureRM.Resources'; ModuleVersion = '4.1.0'; },
+    @{ ModuleName = 'AzureRM.Compute'; ModuleVersion = '3.1.0'; },
+    @{ ModuleName = 'Azure.Storage'; ModuleVersion = '3.1.0'; },
+    @{ ModuleName = 'AzureRM.Storage'; ModuleVersion = '3.1.0'; },
+    @{ ModuleName = 'AzureRM.Network'; ModuleVersion = '4.1.0'; }
 )
 
 # Assemblies that must be loaded prior to importing this module
