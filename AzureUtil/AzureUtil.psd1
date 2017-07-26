@@ -117,7 +117,6 @@ AliasesToExport = @()
 # List of all files packaged with this module
 FileList = @(
     'AzureUtil.psd1',
-    'AzureUtil.psm1',
     'Internal.Common.psm1',
     'EmptyResourceGroup.psm1',
     'NonAttachedManagedDisk.psm1',
