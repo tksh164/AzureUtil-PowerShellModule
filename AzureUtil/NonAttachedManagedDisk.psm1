@@ -53,7 +53,7 @@ function Get-AzureUtilNonAttachedManagedDisk
     PreventUnloggedExecution
 
     # List non-attached managed disks.
-    (Get-AzureRmDisk).ToArray() |
+    Get-AzureRmDisk |
         Where-Object -FilterScript {
             ($ExcludeResourceGroup -notcontains $_.ResourceGroupName) -and ($_.OwnerId -eq $null)
         }
