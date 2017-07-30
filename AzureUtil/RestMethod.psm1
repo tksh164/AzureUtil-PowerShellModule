@@ -8,10 +8,10 @@ function PreventTokenExpire
 
 <#
 .SYNOPSIS
-Sends an HTTP or HTTPS request as Azure REST API.
+Sends an HTTP or HTTPS request as Azure REST API without application registration on Azure AD.
 
 .DESCRIPTION
-The Invoke-AzureUtilRestMethod cmdlet sends HTTP and HTTPS requests to Azure REST API service endpoints that returns structured data.
+The Invoke-AzureUtilRestMethod cmdlet sends HTTP and HTTPS requests to Azure REST API service endpoints without application registration on Azure AD. This cmdlet is very handy for Azure REST API quick testing.
 
 .PARAMETER Method
 Specifies the method used for the web request. This parameter is optional. The default value is "Get".
