@@ -417,6 +417,14 @@ PS > Get-AzureUtilArmTemplateDeployUri -TemplateUri 'https://abcd1234.blob.core.
 
 ## リリース ノート
 
+### [1.0.5](https://github.com/tksh164/AzureUtil-PowerShellModule/releases/tag/1.0.5)
+- [AzureArmTemplateHelper モジュール](https://github.com/tksh164/AzureArmTemplateHelper-PowerShellModule) のバージョン 1.0.3 をマージ。
+- Get-AzureUtilNonAttachedManagedDisk コマンドレットの例外を修正。
+- Get-AzureUtilDatacenterIPRangeInfo コマンドレットと Test-AzureUtilDatacenterIPRange コマンドレットでクッキー確認のポップアップが表示される問題を修正。
+- ヘルプを更新。
+- README を更新。
+- 日本語 README を追加。
+
 ### [1.0.4](https://github.com/tksh164/AzureUtil-PowerShellModule/releases/tag/1.0.4)
 - Invoke-AzureUtilRestMethod コマンドレットを追加。
 - Get-AzureUtilDatacenterIPRangeInfo コマンドレットを追加。
