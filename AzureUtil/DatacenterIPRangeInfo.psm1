@@ -11,7 +11,7 @@
     Write-Verbose -Message 'Getting the URI of Azure datacenter IP ranges XML file.'
 
     $downloadCenterUri = 'https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653'
-    $confirmationPageContent = Invoke-WebRequest -Method Get -Uri $downloadCenterUri
+    $confirmationPageContent = Invoke-WebRequest -Method Get -Uri $downloadCenterUri -UseBasicParsing
 
     $xmlLinkId = 'c50ef285-c6ea-c240-3cc4-6c9d27067d6c'
     $xmlLink = $confirmationPageContent.Links |
@@ -38,7 +38,7 @@
 
     Write-Verbose -Message 'Getting the XML docuemnt of Azure datacenter IP ranges.'
 
-    $contentBytes = Invoke-WebRequest -Method Get -Uri $xmlFileUri
+    $contentBytes = Invoke-WebRequest -Method Get -Uri $xmlFileUri -UseBasicParsing
     $textContent = [System.Text.Encoding]::UTF8.GetString($contentBytes.Content)
     $xmlDoc = [xml] $textContent
 
