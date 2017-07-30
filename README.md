@@ -28,7 +28,7 @@ PS > Install-Module -Name AzureUtil
 
 ### Azure REST API
 - [Invoke-AzureUtilRestMethod cmdlet](#invoke-azureutilrestmethod-cmdlet)
-    - This cmdlet sends HTTP and HTTPS requests to Azure REST API service endpoints that returns structured data.
+    - This cmdlet sends HTTP and HTTPS requests to Azure REST API service endpoints without application registration on Azure AD. This cmdlet is very handy for Azure REST API quick testing.
 
 ### Others
 - [Out-AzureUtilRdcManRdgFile cmdlet](#out-azureutilrdcmanrdgfile-cmdlet)
@@ -205,7 +205,7 @@ PS > Out-AzureUtilRdcManRdgFile -ResourceGroupName 'Prod-RG','Dev-RG' -FilePath 
 ```
 
 ## Invoke-AzureUtilRestMethod cmdlet
-This cmdlet sends HTTP and HTTPS requests to Azure REST API service endpoints that returns structured data.
+This cmdlet sends HTTP and HTTPS requests to Azure REST API service endpoints without application registration on Azure AD. This cmdlet is very handy for Azure REST API quick testing.
 
 ### Parameters
 

@@ -28,7 +28,7 @@ PS > Install-Module -Name AzureUtil
 
 ### Azure REST API
 - [Invoke-AzureUtilRestMethod コマンドレット](#invoke-azureutilrestmethod-コマンドレット)
-    - このコマンドレットは、構造化データを返す Azure REST API サービス エンドポイントに HTTP や HTTPS のリクエストを送信します。
+    - このコマンドレットは、Azure AD へのアプリケーション登録無しで、Azure REST API サービス エンドポイントに HTTP や HTTPS のリクエストを送信します。Azure REST API を手早く試す際にとても便利です。
 
 ### その他
 - [Out-AzureUtilRdcManRdgFile コマンドレット](#out-azureutilrdcmanrdgfile-コマンドレット)
