@@ -417,6 +417,14 @@ PS > Get-AzureUtilArmTemplateDeployUri -TemplateUri 'https://abcd1234.blob.core.
 
 ## Release Notes
 
+### [1.0.5](https://github.com/tksh164/AzureUtil-PowerShellModule/releases/tag/1.0.5)
+- Marged [AzureArmTemplateHelper Module](https://github.com/tksh164/AzureArmTemplateHelper-PowerShellModule) version 1.0.3
+- Fixed the exception in Get-AzureUtilNonAttachedManagedDisk cmdlet.
+- Fixed the cookie popup in Get-AzureUtilDatacenterIPRangeInfo cmdlet and Test-AzureUtilDatacenterIPRange cmdlet.
+- Updated help.
+- Updated README.
+- Added Japanese README.
+
 ### [1.0.4](https://github.com/tksh164/AzureUtil-PowerShellModule/releases/tag/1.0.4)
 - Added Invoke-AzureUtilRestMethod cmdlet.
 - Added Get-AzureUtilDatacenterIPRangeInfo cmdlet.
