@@ -69,10 +69,10 @@ function Out-AzureUtilRdcManRdgFile
             $groupElm = CreateGroupElement -XmlDoc $xmlDoc -GroupName $group.Name
             [void] $xmlDoc.RDCMan.file.AppendChild($groupElm)
 
-            $group |
+            $group.Group |
                 ForEach-Object -Process {
 
-                    $connectionInfo = $_.Group
+                    $connectionInfo = $_
 
                     # Create a new server element as child of the group element.
                     $param = @{
