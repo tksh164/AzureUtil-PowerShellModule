@@ -255,7 +255,21 @@ function GetRdpConnectionInfo
                     {
                         $publicIpAddress = GetPublicIpAddress -PublicIpAddressId $primaryIpConfiguration.PublicIpAddress.Id
 
-                        $connectionInfo.IpAddress = $publicIpAddress.IpAddress
+                        # Public IP address
+                        if (($publicIpAddress.PublicIpAllocationMethod -eq 'Static'))
+                        {
+                            $connectionInfo.IpAddress = $publicIpAddress.IpAddress
+                        }
+                        elseif (($publicIpAddress.PublicIpAllocationMethod -eq 'Dynamic') -and ($publicIpAddress.IpAddress -ne 'Not Assigned'))
+                        {
+                            $connectionInfo.IpAddress = $publicIpAddress.IpAddress
+                        }
+                        else
+                        {
+                            $connectionInfo.IpAddress = 'Not assigned the public IP address by dynamic allocation at this time.'
+                        }
+
+                        # FQDN
                         if ($publicIpAddress.DnsSettings -ne $null)
                         {
                             $connectionInfo.Fqdn = $publicIpAddress.DnsSettings.Fqdn
