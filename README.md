@@ -1,3 +1,5 @@
+日本語の README は[こちら](README.ja-jp.md)です.
+
 # AzureUtil PowerShell Module
 This is a PowerShell module that is collection of utility cmdlets for Azure management operations.
 

@@ -1,3 +1,5 @@
+English README is [here](README.md).
+
 # AzureUtil PowerShell モジュール
 これは Azure 管理操作のためのユーティリティ コマンドレットを集めた PowerShell モジュールです。
 
