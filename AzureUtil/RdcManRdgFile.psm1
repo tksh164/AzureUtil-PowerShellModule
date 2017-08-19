@@ -253,7 +253,7 @@ function GetRdpConnectionInfo
 
                     if ($primaryIpConfiguration.PublicIpAddress -ne $null)
                     {
-                        $publicIpAddress = GetPublicIpAddress -PublicIpAddress $primaryIpConfiguration.PublicIpAddress
+                        $publicIpAddress = GetPublicIpAddress -PublicIpAddressId $primaryIpConfiguration.PublicIpAddress.Id
 
                         $connectionInfo.IpAddress = $publicIpAddress.IpAddress
                         if ($publicIpAddress.DnsSettings -ne $null)
@@ -318,10 +318,10 @@ function GetPublicIpAddress
     [OutputType([Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress])]
     param (
         [Parameter(Mandatory = $true)][ValidateNotNull()]
-        [Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress] $PublicIpAddress
+        [string] $PublicIpAddressId
     )
 
-    $publicIpAddressResource = Get-AzureRmResource -ResourceId $PublicIpAddress.Id
+    $publicIpAddressResource = Get-AzureRmResource -ResourceId $PublicIpAddressId
     $publicIpAddress = Get-AzureRmPublicIpAddress -ResourceGroupName $publicIpAddressResource.ResourceGroupName -Name $publicIpAddressResource.Name
 
     $publicIpAddress
