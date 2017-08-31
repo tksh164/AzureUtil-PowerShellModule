@@ -421,6 +421,10 @@ PS > Get-AzureUtilArmTemplateDeployUri -TemplateUri 'https://abcd1234.blob.core.
 
 ## リリース ノート
 
+### [1.0.6](https://github.com/tksh164/AzureUtil-PowerShellModule/releases/tag/1.0.6)
+- Out-AzureUtilRdcManRdgFile コマンドレットの複数 VM 取り扱い時の問題を修正。
+- Get-AzureUtilDatacenterIPRangeInfo コマンドレットと Test-AzureUtilDatacenterIPRange コマンドレットを改善。
+
 ### [1.0.5](https://github.com/tksh164/AzureUtil-PowerShellModule/releases/tag/1.0.5)
 - [AzureArmTemplateHelper モジュール](https://github.com/tksh164/AzureArmTemplateHelper-PowerShellModule) のバージョン 1.0.3 をマージ。
 - Get-AzureUtilNonAttachedManagedDisk コマンドレットの例外を修正。

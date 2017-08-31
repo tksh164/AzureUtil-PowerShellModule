@@ -421,6 +421,10 @@ PS > Get-AzureUtilArmTemplateDeployUri -TemplateUri 'https://abcd1234.blob.core.
 
 ## Release Notes
 
+### [1.0.6](https://github.com/tksh164/AzureUtil-PowerShellModule/releases/tag/1.0.6)
+- Fixed multi VM handling issue of Out-AzureUtilRdcManRdgFile cmdlet.
+- Improved the Get-AzureUtilDatacenterIPRangeInfo cmdlet and Test-AzureUtilDatacenterIPRange cmdlet.
+
 ### [1.0.5](https://github.com/tksh164/AzureUtil-PowerShellModule/releases/tag/1.0.5)
 - Marged [AzureArmTemplateHelper Module](https://github.com/tksh164/AzureArmTemplateHelper-PowerShellModule) version 1.0.3
 - Fixed the exception in Get-AzureUtilNonAttachedManagedDisk cmdlet.
