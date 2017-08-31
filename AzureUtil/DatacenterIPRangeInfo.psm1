@@ -110,6 +110,11 @@ function GetSubnetMaskAsUInt32
     [uint32] $mask
 }
 
+
+# The downloaded IP range cache.
+$Script:downloadedIpRangesCache = $null
+
+#
 <#
 .SYNOPSIS
 Get the Azure datacenter IP address range information of specified public IP address.
@@ -122,6 +127,9 @@ Specify the public IP address you want to check.
 
 .PARAMETER XmlFilePath
 Specify the file path of Azure datacenter IP address range XML file. The latest XML file is can download from https://www.microsoft.com/en-us/download/details.aspx?id=41653. This parameter is optional.
+
+.PARAMETER IgnoreCache
+If you specify this switch parameter, the cached IP range data will not be used and the latest IP range XML will always be downloaded. By default, this cmdlet is cache the downloaded IP range XML. This parameter is ignored if this parameter and the XmlFilePath parameter are specified at the same time.
 
 .EXAMPLE
     PS > Get-AzureUtilDatacenterIPRangeInfo -IPAddress '13.73.24.96'
@@ -175,7 +183,10 @@ function Get-AzureUtilDatacenterIPRangeInfo
         [string[]] $IPAddress,
 
         [Parameter(Mandatory = $false)]
-        [string] $XmlFilePath
+        [string] $XmlFilePath,
+
+        [Parameter(Mandatory = $false)]
+        [switch] $IgnoreCache
     )
 
     begin
@@ -185,15 +196,25 @@ function Get-AzureUtilDatacenterIPRangeInfo
         {
             Write-Verbose -Message ('Reading the Azure datacenter IP ranges XML document from "{0}".' -f $XmlFilePath)
             $xmlDoc = [xml] (Get-Content -LiteralPath $XmlFilePath -Encoding UTF8 -ErrorAction Stop)
+            $ipRanges = $xmlDoc.SelectNodes('//IpRange')
         }
         else
         {
-            Write-Verbose -Message 'Downloading the Azure datacenter IP ranges XML document.'
-            $xmlDoc = DownloadDatacenterIPRangeXml -ErrorAction Stop
-        }
+            if (($Script:downloadedIpRangesCache -ne $null) -and (-not $IgnoreCache))
+            {
+                # Use the cached IP ranges.
+                $ipRanges = $Script:downloadedIpRangesCache
+            }
+            else
+            {
+                Write-Verbose -Message 'Downloading the Azure datacenter IP ranges XML document.'
+                $xmlDoc = DownloadDatacenterIPRangeXml -ErrorAction Stop
+                $ipRanges = $xmlDoc.SelectNodes('//IpRange')
 
-        # Get the IpRange nodes from the XML document.
-        $ipRanges = $xmlDoc.SelectNodes('//IpRange')
+                # Caching the downloaded IP ranges.
+                $Script:downloadedIpRangesCache = $ipRanges
+            }
+        }
     }
 
     process
@@ -258,6 +279,9 @@ Specify the public IP address you want to check.
 .PARAMETER XmlFilePath
 Specify the file path of Azure datacenter IP address range XML file. The latest XML file is can download from https://www.microsoft.com/en-us/download/details.aspx?id=41653. This parameter is optional.
 
+.PARAMETER IgnoreCache
+If you specify this switch parameter, the cached IP range data will not be used and the latest IP range XML will always be downloaded. By default, this cmdlet is cache the downloaded IP range XML. This parameter is ignored if this parameter and the XmlFilePath parameter are specified at the same time.
+
 .EXAMPLE
     PS > Test-AzureUtilDatacenterIPRange -IPAddress '13.73.24.96'
     True
@@ -292,12 +316,16 @@ function Test-AzureUtilDatacenterIPRange
         [string] $IPAddress,
 
         [Parameter(Mandatory = $false)]
-        [string] $XmlFilePath
+        [string] $XmlFilePath,
+
+        [Parameter(Mandatory = $false)]
+        [switch] $IgnoreCache
     )
 
     # Build the parameters.
     $params = @{
-        IPAddress = $IPAddress
+        IPAddress   = $IPAddress
+        IgnoreCache = $IgnoreCache
     }
     if ($PSBoundParameters.ContainsKey('XmlFilePath'))
     {
