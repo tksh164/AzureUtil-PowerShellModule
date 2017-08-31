@@ -287,6 +287,7 @@ PS C:\> Invoke-AzureUtilRestMethod -Uri '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-
 | ----------- | ---------------------------------------- |
 | IPAddress   | 確認したいパブリック IP アドレスを指定します。                |
 | XmlFilePath | Azure データセンター IP アドレス範囲 XML ファイルのファイル パスを指定します。このパラメーターは省略可能です。最新の XML ファイルは [ここ](https://www.microsoft.com/en-us/download/details.aspx?id=41653) からダウンロードできます。 |
+IgnoreCache   | このパラメーターを指定した場合、キャッシュされた IP 範囲データを使用せずに最新の IP 範囲 XML を常にダウンロードします。既定ではこのコマンドレットはダウンロードした IP 範囲 XML をキャッシュします。このパラメーターと XmlFilePath パラメーターを同時に指定した場合、このパラメーターは無視されます。|
 
 ### 例
 
@@ -336,6 +337,7 @@ IPAddress   RegionName IPRange
 | ----------- | ---------------------------------------- |
 | IPAddress   | 確認したいパブリック IP アドレスを指定します。                |
 | XmlFilePath | Azure データセンター IP アドレス範囲 XML ファイルのファイル パスを指定します。このパラメーターは省略可能です。最新の XML ファイルは [ここ](https://www.microsoft.com/en-us/download/details.aspx?id=41653) からダウンロードできます。 |
+IgnoreCache   | このパラメーターを指定した場合、キャッシュされた IP 範囲データを使用せずに最新の IP 範囲 XML を常にダウンロードします。既定ではこのコマンドレットはダウンロードした IP 範囲 XML をキャッシュします。このパラメーターと XmlFilePath パラメーターを同時に指定した場合、このパラメーターは無視されます。|
 
 ### 例
 
