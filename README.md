@@ -287,6 +287,7 @@ Parameter Name | Description
 ---------------|-------------------
 IPAddress      | Specify the public IP address you want to check.
 XmlFilePath    | Specify the file path of Azure datacenter IP address range XML file. This parameter is optional. The latest XML file is can download from [here](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
+IgnoreCache    | If you specify this switch parameter, the cached IP range data will not be used and the latest IP range XML will always be downloaded. By default, this cmdlet is cache the downloaded IP range XML. This parameter is ignored if this parameter and the XmlFilePath parameter are specified at the same time.
 
 ### Examples
 
@@ -336,6 +337,7 @@ Parameter Name | Description
 ---------------|-------------------
 IPAddress      | Specify the public IP address you want to check.
 XmlFilePath    | Specify the file path of Azure datacenter IP address range XML file. This parameter is optional. The latest XML file is can download from [here](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
+IgnoreCache    | If you specify this switch parameter, the cached IP range data will not be used and the latest IP range XML will always be downloaded. By default, this cmdlet is cache the downloaded IP range XML. This parameter is ignored if this parameter and the XmlFilePath parameter are specified at the same time.
 
 ### Examples
 
@@ -418,6 +420,10 @@ PS > Get-AzureUtilArmTemplateDeployUri -TemplateUri 'https://abcd1234.blob.core.
 ```
 
 ## Release Notes
+
+### [1.0.6](https://github.com/tksh164/AzureUtil-PowerShellModule/releases/tag/1.0.6)
+- Fixed multi VM handling issue of Out-AzureUtilRdcManRdgFile cmdlet.
+- Improved the Get-AzureUtilDatacenterIPRangeInfo cmdlet and Test-AzureUtilDatacenterIPRange cmdlet.
 
 ### [1.0.5](https://github.com/tksh164/AzureUtil-PowerShellModule/releases/tag/1.0.5)
 - Marged [AzureArmTemplateHelper Module](https://github.com/tksh164/AzureArmTemplateHelper-PowerShellModule) version 1.0.3
