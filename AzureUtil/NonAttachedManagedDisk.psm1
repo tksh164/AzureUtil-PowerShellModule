@@ -55,6 +55,6 @@ function Get-AzureUtilNonAttachedManagedDisk
     # List non-attached managed disks.
     Get-AzureRmDisk |
         Where-Object -FilterScript {
-            ($ExcludeResourceGroup -notcontains $_.ResourceGroupName) -and ($_.OwnerId -eq $null)
+            ($ExcludeResourceGroup -notcontains $_.ResourceGroupName) -and ($_.ManagedBy -eq $null)
         }
 }
