@@ -1,9 +1,13 @@
 日本語の README は[こちら](README.ja-jp.md)です.
 
 # AzureUtil PowerShell Module
+
+[![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/AzureUtil?color=0072c6&label=PowerShell%20Gallery&logo=PowerShell)](https://www.powershellgallery.com/packages/AzureUtil/)
+
 This is a PowerShell module that is collection of utility cmdlets for Azure management operations.
 
 ## Install
+
 This module available on the [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureUtil/) page. You can install use the Install-Module cmdlet.
 
 ```PowerShell
@@ -13,26 +17,31 @@ PS > Install-Module -Name AzureUtil
 ## Cmdlets
 
 ### Resource Group Management
+
 - [Get-AzureUtilEmptyResourceGroup cmdlet](#get-azureutilemptyresourcegroup-cmdlet)
     - This cmdlet is get the resource groups that not contains any resources from the entire subscription.
 
 ### Disk Storage Management
+
 - [Get-AzureUtilNonAttachedManagedDisk cmdlet](#get-azureutilnonattachedmanageddisk-cmdlet)
     - This cmdlet gets the managed disks that non-attached to any virtual machines from the entire subscription.
 - [Get-AzureUtilNonAttachedUnmanagedDisk cmdlet](#get-azureutilnonattachedunmanageddisk-cmdlet)
     - This cmdlet gets the unmanaged disks (VHDs/Blobs) that non-attached to any virtual machines from the entire subscription.
 
 ### ARM Template Creation
+
 - [Set-AzureUtilArmTemplateFile cmdlet](#set-azureutilarmtemplatefile-cmdlet)
     - This cmdlet helping to ARM template making by upload the ARM template files on local filesystem to blob storage of Azure storage. When you making linked ARM template, this cmdlet is especially helpful.
 - [Get-AzureUtilArmTemplateDeployUri cmdlet](#get-azureutilarmtemplatedeployuri-cmdlet)
     - This cmdlet building the URL that is access to custom deployment blade on Azure Portal. The URL allows deployment of your ARM template via Azure Portal.
 
 ### Azure REST API
+
 - [Invoke-AzureUtilRestMethod cmdlet](#invoke-azureutilrestmethod-cmdlet)
     - This cmdlet sends HTTP and HTTPS requests to Azure REST API service endpoints without application registration on Azure AD. This cmdlet is very handy for Azure REST API quick testing.
 
 ### Others
+
 - [Out-AzureUtilRdcManRdgFile cmdlet](#out-azureutilrdcmanrdgfile-cmdlet)
     - This cmdlet creates a ".rdg" file for Azure Windows virtual machine connection. The ".rdg" file is can open by [Remote Desktop Connection Manager](https://www.microsoft.com/en-us/download/details.aspx?id=44989).
 - [Get-AzureUtilDatacenterIPRangeInfo cmdlet](#get-azureutildatacenteriprangeinfo-cmdlet)
@@ -41,6 +50,7 @@ PS > Install-Module -Name AzureUtil
     - This cmdlet provides quick test to see if the specified IP address is Azure's public IP address.
 
 ## Get-AzureUtilEmptyResourceGroup cmdlet
+
 This cmdlet is get the resource groups that not contains any resources from the entire subscription.
 
 ### Parameters
@@ -53,6 +63,7 @@ ExcludeLocation      | This cmdlet is ignore the resource groups that has locati
 ### Examples
 
 #### Example 1
+
 This example is get the all empty resource groups in current subscription.
 
 ```PowerShell
@@ -60,6 +71,7 @@ PS > Get-AzureUtilEmptyResourceGroup
 ```
 
 #### Example 2
+
 This example is get the all empty resource groups in current subscription.
 
 ```PowerShell
@@ -74,6 +86,7 @@ Test-RG           japanwest
 ```
 
 #### Example 3
+
 In this example, it is to get the all empty resource groups in the current subscription except the resource group's location is "japaneast" or "Japan West".
 
 ```PowerShell
@@ -81,6 +94,7 @@ PS > Get-AzureUtilEmptyResourceGroup -ExcludeLocation 'japaneast','Japan West'
 ```
 
 #### Example 4
+
 In this example, it is to remove the all empty resource groups in the current subscription except the "ProjectA-RG" and "ProjectB-RG" resource groups. Those resource groups are not included to remove even if those were empty.
 
 ```PowerShell
@@ -88,6 +102,7 @@ PS > Get-AzureUtilEmptyResourceGroup -ExcludeResourceGroup 'ProjectA-RG','Projec
 ```
 
 #### Example 5
+
 In this example, it is to get the all empty resource groups in the current subscription except the resource group that is name is "Prod-RG" or location is "Japan West".
 
 ```PowerShell
@@ -95,6 +110,7 @@ PS > Get-AzureUtilEmptyResourceGroup -ExcludeResourceGroup 'Prod-RG' -ExcludeLoc
 ```
 
 ## Get-AzureUtilNonAttachedManagedDisk cmdlet
+
 Get the managed disks that non-attached to any virtual machines from the entire subscription.
 
 ### Parameters
@@ -106,6 +122,7 @@ ExcludeResourceGroup | This cmdlet is ignore the resource groups that provided b
 ### Examples
 
 #### Example 1
+
 In this example, it is to get the all non-attached managed disk resources in the current subscription.
 
 ```PowerShell
@@ -113,6 +130,7 @@ PS > Get-AzureUtilNonAttachedManagedDisk
 ```
 
 #### Example 2
+
 In this example, it is to get the all non-attached managed disk resources in the current subscription except the disk resources in the "Prod-RG" and "Test-RG" resource groups.
 
 ```PowerShell
@@ -120,6 +138,7 @@ PS > Get-AzureUtilNonAttachedManagedDisk -ExcludeResourceGroup 'Prod-RG','Test-R
 ```
 
 #### Example 3
+
 In this example, it is to remove the all non-attached managed disk resources in the current subscription.
 
 ```PowerShell
@@ -127,6 +146,7 @@ PS > Get-AzureUtilNonAttachedManagedDisk | Remove-AzureRmDisk -Verbose
 ```
 
 ## Get-AzureUtilNonAttachedUnmanagedDisk cmdlet
+
 Get the unmanaged disks (VHDs/Blobs) that non-attached to any virtual machines from the entire subscription.
 
 ### Parameters
@@ -138,6 +158,7 @@ ExcludeResourceGroup | This cmdlet is ignore the resource groups that provided b
 ### Examples
 
 #### Example 1
+
 In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription.
 
 ```PowerShell
@@ -145,6 +166,7 @@ PS > Get-AzureUtilNonAttachedUnmanagedDisk -Verbose
 ```
 
 #### Example 2
+
 In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription except the storage accounts in the "TemplateStore-RG" and "securitydata" resource groups.
 
 ```PowerShell
@@ -152,6 +174,7 @@ PS > Get-AzureUtilNonAttachedUnmanagedDisk -ExcludeResourceGroup 'TemplateStore-
 ```
 
 #### Example 3
+
 In this example, it is to get the all non-attached unmanaged disks (VHDs/Blobs) in the current subscription except the storage accounts in the "securitydata" resource group. The results is formatted as table style in this example.
 
 ```PowerShell

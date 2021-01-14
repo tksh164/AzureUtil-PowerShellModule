@@ -1,6 +1,9 @@
 English README is [here](README.md).
 
 # AzureUtil PowerShell モジュール
+
+[![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/AzureUtil?color=0072c6&label=PowerShell%20Gallery&logo=PowerShell)](https://www.powershellgallery.com/packages/AzureUtil/)
+
 これは Azure 管理操作のためのユーティリティ コマンドレットを集めた PowerShell モジュールです。
 
 ## インストール
